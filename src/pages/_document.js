@@ -52,7 +52,7 @@ export default function Document() {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="canonical" href="http://simreus.com/" hreflang="es-es" />
-        <link rel="alternate" href="http://simreus.com/es" hreflang="es-es" />
+        <link rel="alternate" href="http://simreus.com/en" hreflang="en" />
         <link rel="alternate" href="http://simreus.com/ca" hreflang="ca" />
       </Head>
       <body>

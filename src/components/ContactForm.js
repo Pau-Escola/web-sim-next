@@ -97,8 +97,13 @@ const ContactForm = () => {
             <div>
             <label htmlFor="checkbox" />
                 <input type="checkbox" checked={isAgreed} onChange={handleCheckboxChange} />
-                <span className="text-black">{t('I agree')} <Link href="/legal-policies">{t('Data Policies')}
-      </Link>.</span>
+                <span className="text-black">{t('I agree')} 
+                    <Link href="/legal-policies"  legacyBehavior>
+                        <a className="text-blue-500">
+                            {t('Data Policies')}
+                        </a>
+                    </Link>.
+                </span>
             </div>
             <div>
                 <button type="submit" disabled={isSubmitting} className="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
