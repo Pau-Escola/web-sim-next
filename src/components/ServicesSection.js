@@ -5,7 +5,6 @@ import repairIcon from '../../public/images/servicesicons/reparacio-blau.png';
 import buyIcon from '../../public/images/servicesicons/venda-blau.png';
 import recycleIcon from '../../public/images/servicesicons/reciclar-blau.png';
 import tradingIcon from '../../public/images/servicesicons/trading-blau.png';
-import cabinIcon from '../../public/images/servicesicons/cabin-blau.png';
 import { useTranslation, Trans } from 'react-i18next';
 import Image from 'next/image';
 
@@ -23,8 +22,7 @@ function ServicesSection() {
                         { icon: repairIcon, title: 'Repairs', text: 'Repairs Text' },
                         { icon: relocationIcon, title: 'Relocation', text: 'Relocation Text' },
                         { icon: recycleIcon, title: 'Recycled Goods', text: 'Recycled Goods Text' },
-                        { icon: tradingIcon, title: 'Trading', text: 'Trading Text' },
-                        { icon: cabinIcon, title: 'Cabin', text: 'Cabin Text' },
+                        { icon: tradingIcon, title: 'Trading', text: 'Trading Text' }
                     ].map((service, index) => (
                         <div key={index} className="group relative border-4 bg-white text-primary border-primary shadow-sm rounded-lg overflow-hidden">
                             <Image src={service.icon} alt={`${service.title}`} className="w-64 h-64 mx-auto pt-5" />
