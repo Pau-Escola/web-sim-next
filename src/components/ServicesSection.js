@@ -15,7 +15,7 @@ function ServicesSection() {
         <div className="bg-primary py-8">
             <div className="max-w-6xl mx-auto px-4">
                 <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-6">{t('Our services')}</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
                         { icon: rentIcon, title: 'Rent', text: 'Rent Text' },
                         { icon: buyIcon, title: 'Buy', text: 'Buy Text' },

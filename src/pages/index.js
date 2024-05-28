@@ -3,6 +3,8 @@ import HomePage from '../components/HomePage';
 import ContactFormModal from '../components/ContactFormModal';
 import NavBar from '../components/NavBar';
 import ContactInfoFooter from '../components/ContactInfoFooter';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
@@ -26,5 +28,13 @@ const Index = () => {
     </div>
   );
 };
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])), // Asegúrate de tener un namespace 'common' para traducciones generales
+    },
+  };
+}
 
 export default Index;

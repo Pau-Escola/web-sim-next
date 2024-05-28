@@ -5,7 +5,7 @@ import modul from '../../public/images/homepage/modul-2.jpg';
 import casetaOcasio from '../../public/images/homepage/ocasio-1.JPG';
 import edificiModular from '../../public/images/homepage/edifici-despres.jpeg';
 import reparacioCantera from '../../public/images/homepage/reparacio-cantera.jpg';
-import cabinIcon from '../../public/images/homepage/planol-cabina-camp.jpeg';
+import cabinIcon from '../../public/images/homepage/refugi-de-camp.png';
 
 import Image from 'next/image';
 
@@ -43,7 +43,7 @@ const products = [
     {
         img: cabinIcon,
         titleKey: 'Cabin',
-        textKey:'Cabin Text',
+        textKey: 'Cabin Text',
         objectPosition: 'center center'
     }
 ];
@@ -55,14 +55,26 @@ const ProductsSection = () => {
         <div className="container mx-auto px-4">
             <div className="services-section my-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">{t('Our products')}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {products.map((product, index) => (
-                        <div key={index} className="service-item shadow-xl rounded-lg p-8 border border-gray-200">
-                            <div className="flex justify-center">
-                                <Image src={product.img} alt={t(product.titleKey)} className="w-full h-64 md:h-64 lg:h-80 object-contain lg:object-cover" style={{ objectPosition: product.objectPosition }} />
+                        <div key={index} className="relative shadow-xl rounded-lg overflow-hidden h-64 md:h-64 lg:h-80 group">
+                            <Image 
+                                src={product.img} 
+                                alt={t(product.titleKey)} 
+                                layout="fill" 
+                                objectFit="cover" 
+                                style={{ objectPosition: product.objectPosition }} 
+                                className="absolute inset-0 z-0"
+                            />
+                             <div className="absolute inset-0 flex flex-col justify-end">
+                                <div className="bg-black bg-opacity-60 text-white p-2 transition-transform duration-300 group-hover:translate-y-full">
+                                    <h3 className="text-xl font-semibold">{t(product.titleKey)}</h3>
+                                </div>
                             </div>
-                            <h3 className="text-2xl font-semibold mt-4">{t(product.titleKey)}</h3>
-                            <p className="mt-2 text-lg">{t(product.textKey)}</p>
+                            <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end items-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <h3 className="text-white text-xl font-semibold mb-2">{t(product.titleKey)}</h3>
+                                <p className="text-white text-lg">{t(product.textKey)}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

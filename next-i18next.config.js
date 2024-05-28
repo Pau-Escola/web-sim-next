@@ -1,4 +1,4 @@
-// next-i18next.config.mjs
+
 const i18n = {
     locales: ['en', 'ca', 'es'],
     defaultLocale: 'es',

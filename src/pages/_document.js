@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 export default function Document() {
   return (
-    <Html lang="es">
+    <Html>
       <Head>
         {/* Google Analytics */}
         <Script
@@ -39,8 +39,6 @@ export default function Document() {
         />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta httpEquiv="Content-Language" content="es" />
-        <meta name="content-language" content="es" />
         <meta name="geo.region" content="ES" />
         <meta name="geo.placename" content="Spain" />
         <link rel="icon" href="/favicon.ico" />
@@ -51,9 +49,6 @@ export default function Document() {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="canonical" href="http://simreus.com/" hreflang="es-es" />
-        <link rel="alternate" href="http://simreus.com/en" hreflang="en" />
-        <link rel="alternate" href="http://simreus.com/ca" hreflang="ca" />
       </Head>
       <body>
         {/* Google Tag Manager (noscript) */}
