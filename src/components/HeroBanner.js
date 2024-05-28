@@ -7,9 +7,17 @@ import casetaControl2 from '../../public/images/herobanner/IMG_20200804_081113 -
 import casetaControl from '../../public/images/herobanner/IMG_20200804_081215.jpg';
 
 function HeroBanner() {
+
+    const images = [
+        {src:cotenidor1, position: 'center center'},
+        {src:cotenidor2, position: 'center center'},
+        {src:casetaJetSKi, position: 'center bottom'},
+        {src:casetaControl, position: 'center bottom'},
+        {src:casetaControl2, position: 'center bottom'}
+    ]
     return (
         <div className="relative h-[400px] md:h-[500px] lg:h-[800px] w-full">
-            <Carousel images={[cotenidor1, cotenidor2, casetaJetSKi, casetaControl, casetaControl2]} size="absolute inset-0 w-full h-full" objectFit={"object-cover"} />
+            <Carousel images={images} size="absolute inset-0 w-full h-full" objectFit={"object-contain"} />
             
         </div>
     );

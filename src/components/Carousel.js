@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 
-const Carousel = ({ images, size, objectFit, interval = 5000 }) => {
+const Carousel = ({ images, size, interval = 5000 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
@@ -93,14 +94,21 @@ const Carousel = ({ images, size, objectFit, interval = 5000 }) => {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
         >
-            <div className="carousel-items w-full h-full flex justify-center items-center" aria-live="polite">
+            <div className="carousel-items w-full h-full relative" aria-live="polite">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`${index === currentIndex ? 'block' : 'hidden'} w-full h-full`}
+                        className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
                         aria-hidden={index !== currentIndex}
+                        style={{ transition: 'opacity 0.5s ease-in-out' }}
                     >
-                        <Image src={image} alt="Description generic" className={`${objectFit} mx-auto w-full h-full`} />
+                        <Image
+                            src={image.src}
+                            alt={image.alt || 'Image'}
+                            layout="fill"
+                            objectFit="cover"
+                            style={{ objectPosition: image.position || 'center center' }}
+                        />
                     </div>
                 ))}
             </div>
@@ -113,6 +121,20 @@ const Carousel = ({ images, size, objectFit, interval = 5000 }) => {
                     ></div>
                 ))}
             </div>
+            <button
+                onClick={goToPrevious}
+                className="absolute top-1/2 transform -translate-y-1/2 left-0 h-full flex items-center justify-center z-10 cursor-pointer hidden md:flex"
+                aria-label="Previous slide"
+            >
+                <FaArrowLeft className="w-6 h-6 text-secondary" />
+            </button>
+            <button
+                onClick={goToNext}
+                className="absolute top-1/2 transform -translate-y-1/2 right-0 h-full flex items-center justify-center z-10 cursor-pointer hidden md:flex"
+                aria-label="Next slide"
+            >
+                <FaArrowRight className="w-6 h-6 text-secondary" />
+            </button>
         </div>
     );
 };
