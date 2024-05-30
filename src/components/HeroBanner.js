@@ -1,24 +1,25 @@
 import React from 'react';
 import Carousel from './Carousel'; // Import your Carousel component
-import casetaJetSKi from '../../public/images/herobanner/jetSkiCaseta.jpg';
-import cotenidor1 from '../../public/images/herobanner/contenidor.jpg';
-import cotenidor2 from '../../public/images/herobanner/contenidor2.jpg';
-import casetaControl2 from '../../public/images/herobanner/IMG_20200804_081113 - copia.jpg';
-import casetaControl from '../../public/images/herobanner/IMG_20200804_081215.jpg';
+import contenidorNou from '../../public/images/homepage/contenidor-1.JPG';
+import modul from '../../public/images/homepage/modul-2.jpg';
+import casetaOcasio from '../../public/images/homepage/ocasio-1.JPG';
+import edificiModular from '../../public/images/homepage/edifici-despres.jpeg';
+import reparacioCantera from '../../public/images/homepage/reparacio-cantera.jpg';
+import cabinIcon from '../../public/images/homepage/refugi-de-camp.png';
 
 function HeroBanner() {
-
     const images = [
-        {src:cotenidor1, position: 'center center'},
-        {src:cotenidor2, position: 'center center'},
-        {src:casetaJetSKi, position: 'center bottom'},
-        {src:casetaControl, position: 'center bottom'},
-        {src:casetaControl2, position: 'center bottom'}
-    ]
+        { src: contenidorNou, position: 'center top', url: '/products/contenidor-nou' },
+        { src: modul, position: 'center center', url: '/products/modul' },
+        { src: casetaOcasio, position: 'center bottom', url: '/products/caseta-ocasio' },
+        { src: edificiModular, position: 'center top', url: '/products/edifici-modular' },
+        { src: reparacioCantera, position: 'center bottom', url: '/products/reparacio-cantera' },
+        { src: cabinIcon, position: 'center bottom', url: '/products/cabin' }
+    ];
+
     return (
-        <div className="relative h-[400px] md:h-[500px] lg:h-[800px] w-full">
-            <Carousel images={images} size="absolute inset-0 w-full h-full" objectFit={"object-contain"} />
-            
+        <div className="relative h-screen w-full">
+            <Carousel images={images} size="absolute inset-0 w-full h-full" objectFit={"object-cover"} />
         </div>
     );
 }

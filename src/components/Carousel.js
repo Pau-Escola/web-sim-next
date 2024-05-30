@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
+import Link from 'next/link';
 
-const Carousel = ({ images, size, interval = 5000 }) => {
+const Carousel = ({ images, interval = 5000, objectFit }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
@@ -83,7 +84,7 @@ const Carousel = ({ images, size, interval = 5000 }) => {
 
     return (
         <div
-            className={`carousel-container relative flex items-center overflow-hidden ${size}`}
+            className="carousel-container relative flex items-center justify-center overflow-hidden w-full h-full"
             aria-roledescription="carousel"
             aria-label="Gallery"
             onTouchStart={handleTouchStart}
@@ -94,21 +95,31 @@ const Carousel = ({ images, size, interval = 5000 }) => {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
         >
-            <div className="carousel-items w-full h-full relative" aria-live="polite">
+            <div
+                className="carousel-track flex transition-transform duration-500 ease-in-out w-full h-full"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
-                        aria-hidden={index !== currentIndex}
-                        style={{ transition: 'opacity 0.5s ease-in-out' }}
+                        className="w-full h-full flex-shrink-0 relative"
                     >
                         <Image
                             src={image.src}
                             alt={image.alt || 'Image'}
                             layout="fill"
-                            objectFit="cover"
-                            style={{ objectPosition: image.position || 'center center' }}
+                            objectFit={objectFit}
+                            objectPosition={image.position || 'center center'}
                         />
+                        <Link href={image.url} legacyBehavior>
+                            <a className="absolute inset-0 flex items-center justify-center">
+                            <div className="mb-10 p-10 bg-black opacity-80 rounded-lg shadow-md">
+                                <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">
+                                    View Product
+                                </button>
+                            </div>
+                            </a>
+                        </Link>
                     </div>
                 ))}
             </div>
