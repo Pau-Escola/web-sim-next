@@ -9,12 +9,12 @@ import cabinIcon from '../../public/images/homepage/refugi-de-camp.png';
 
 function HeroBanner() {
     const images = [
-        {src: contenidorNou, position: 'center top', url: '/contenidorNou', title: 'Container', text: 'Container Text'},
-        {src: modul, position: 'center center', url: '/modul', title: 'Prefabs', text: 'Prefabs Text'},
-        {src: casetaOcasio, position: 'center bottom', url: '/casetaOcasio', title: 'Sale', text: 'Sale Text'},
-        {src: edificiModular, position: 'center top', url: '/edificiModular', title: 'Modular Building', text: 'Modular Building Text'},
-        {src: reparacioCantera, position: 'center top', url: '/reparacioCantera', title: 'Maintenance', text: 'Maintenance Text'},
-        {src: cabinIcon, position: 'center bottom', url: '/cabinIcon', title: 'Cabin', text: 'Cabin Text'}
+        {src: contenidorNou, position: 'center top', url: '/products/container', title: 'Container', text: 'Container Text'},
+        {src: modul, position: 'center center', url: '/products/prefab', title: 'Prefabs', text: 'Prefabs Text'},
+        {src: casetaOcasio, position: 'center bottom', url: '/products/sale', title: 'Sale', text: 'Sale Text'},
+        {src: edificiModular, position: 'center top', url: '/products/building', title: 'Modular Building', text: 'Modular Building Text'},
+        {src: reparacioCantera, position: 'center top', url: '/products/maintenance', title: 'Maintenance', text: 'Maintenance Text'},
+        {src: cabinIcon, position: 'center bottom', url: '/products/cabin', title: 'Cabin', text: 'Cabin Text'}
     ];
 
     return (
