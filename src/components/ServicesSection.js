@@ -24,11 +24,11 @@ function ServicesSection() {
                         { icon: recycleIcon, title: 'Recycled Goods', text: 'Recycled Goods Text' },
                         { icon: tradingIcon, title: 'Trading', text: 'Trading Text' }
                     ].map((service, index) => (
-                        <div key={index} className="group relative border-4 bg-white text-primary border-primary shadow-sm rounded-lg overflow-hidden">
+                        <div key={index} className="group relative md:border-4 bg-white sm:w-full text-primary border-primary shadow-sm rounded-lg overflow-hidden">
                             <Image src={service.icon} alt={`${service.title}`} className="w-64 h-64 mx-auto pt-5" />
                             <h3 className="text-2xl text-center mt-2 font-semibold">{t(service.title)}</h3>
                             <div className="absolute inset-0 bg-primary bg-opacity-95 scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out flex justify-center items-center opacity-0 group-hover:opacity-100">
-                                <p className="text-lg p-4 text-white"><Trans i18nKey={`${service.text}`} /></p>
+                                <p className="text-sm sm:text-base md:text-lg p-4 text-white"><Trans i18nKey={`${service.text}`} /></p>
                             </div>
                         </div>
                     ))}
