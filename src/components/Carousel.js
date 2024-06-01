@@ -2,14 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
-const Carousel = ({ images, interval = 5000, objectFit }) => {
+
+const Carousel = ({ images, interval = 7000, objectFit }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
     const [dragStart, setDragStart] = useState(null);
     const [dragEnd, setDragEnd] = useState(null);
     const autoSlideRef = useRef();
+    const { t } = useTranslation();
+
 
     const minSwipeDistance = 50;
 
@@ -111,15 +115,17 @@ const Carousel = ({ images, interval = 5000, objectFit }) => {
                             objectFit={objectFit}
                             objectPosition={image.position || 'center center'}
                         />
-                        <Link href={image.url} legacyBehavior>
-                            <a className="absolute inset-0 flex items-center justify-center">
-                            <div className="mb-10 p-10 bg-black opacity-80 rounded-lg shadow-md">
-                                <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">
-                                    View Product
-                                </button>
-                            </div>
-                            </a>
-                        </Link>
+                        <div className="absolute top-1/2 right-0 m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-1/3 h-auto text-white">
+                            <h2 className="text-2xl font-bold mb-2">{t(image.title)}</h2>
+                            <p className="mb-4">{t(image.text)}</p>
+                            <Link href={image.url} legacyBehavior>
+                                <a>
+                                    <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">
+                                    {t('View Product')}
+                                    </button>
+                                </a>
+                            </Link>
+                        </div>
                     </div>
                 ))}
             </div>
