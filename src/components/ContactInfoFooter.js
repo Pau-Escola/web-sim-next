@@ -18,8 +18,8 @@ function ContactInfoFooter() {
                 </div>
                 <div>
                     <h2 className="font-bold text-lg">{t('Contact us')}</h2>
-                    <p>{t('Phone')} (+34) 977 344 711</p>
-                    <p>{t('Email')}: comercial@simreus.com</p>
+                    <p> (+34) 977 344 711</p>
+                    <p> comercial@simreus.com</p>
                     <button
                         className="mt-2 right-4 bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
                         onClick={() => setIsModalOpen(true)}
