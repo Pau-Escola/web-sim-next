@@ -4,24 +4,32 @@ import Image from 'next/image';
 import ContactForm from './ContactForm';
 import NavBar from './NavBar';
 import ContactInfoFooter from './ContactInfoFooter';
+import { useTranslation } from 'react-i18next';
 
 const ProductPageLayout = ({ title, description, imageSrc }) => {
+    const { t } = useTranslation();
+
     return (
         <>
             <Head>
                 <title>{title}</title>
             </Head>
             <NavBar />
-            <div className="relative h-64 w-full md:h-96">
-            <Image src={imageSrc} alt={title} layout="fill" objectFit="cover"/>
+            <div className="relative h-64 w-full md:h-96 mb-8">
+                <Image src={imageSrc} alt={title} layout="fill" objectFit="cover"/>
+                <div className="absolute bottom-0 left-0 bg-primary text-white p-4 rounded-md">
+                    <h2 className="text-xl md:text-4xl font-bold">{title}</h2>
+                </div>
             </div>
-            <div className="flex flex-col md:flex-row items-center justify-center">
-                <div className=" md:w-3/4 flex flex-col items-center md:items-start">
-            <h2 className=" absolute top-1/4 text-3xl md:text-4xl font-bold bg-secondary text-primary text-center mb-6">{title}</h2>
+            <div className="flex flex-col md:flex-row items-center justify-center px-4 md:px-8">
+                <div className="md:w-3/4 flex flex-col items-center md:items-start mb-8 md:mb-0">
                     <p className="text-lg text-gray-800 ml-4 mt-4 md:mt-6">{description}</p>
                 </div>
-                <div className="p-3 md:w-1/4 mt-20 flex justify-center md:justify-start bg-primary rounded-lg">
+                <div className="md:w-1/4 flex justify-center md:justify-start bg-primary p-9 rounded-md">
                     <div className="w-full max-w-md">
+                    <div className="bg-primary text-white p-4 text-center rounded-md">
+                    <h2 className="text-xl md:text-4xl font-bold">{t('Contact us')}</h2>
+                </div>
                         <ContactForm />
                     </div>
                 </div>
