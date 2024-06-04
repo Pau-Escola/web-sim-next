@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Carousel from './Carousel'; // Your Carousel component
 
-const ProductModal = ({ product, onClose, onAddToBasket }) => {
+const ProductModal = ({ product, onClose, onAddToBasket, onRemoveFromBasket }) => {
     if (!product) return null;
 
     return (
@@ -17,7 +17,7 @@ const ProductModal = ({ product, onClose, onAddToBasket }) => {
                 </button>
                 <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
                 <div className="relative h-64 w-full mb-4">
-                    <Image src={product.images[0]} alt={product.title} layout="fill" objectFit="cover" />
+                    <Carousel images={product.images} objectFit={"contain"}/>
                 </div>
                 <p className="text-lg mb-4">{product.description}</p>
                 <p className="text-lg font-bold mb-4">{product.price}</p>
@@ -26,6 +26,12 @@ const ProductModal = ({ product, onClose, onAddToBasket }) => {
                     className="px-4 py-2 bg-primary text-white rounded-md hover:bg-secondary transition"
                 >
                     Add to Basket
+                </button>
+                <button
+                    onClick={() => onRemoveFromBasket(product.id)}
+                    className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-700 transition"
+                >
+                    Remove from Basket
                 </button>
             </div>
         </div>

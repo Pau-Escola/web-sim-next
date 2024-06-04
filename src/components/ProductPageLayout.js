@@ -27,9 +27,9 @@ const ProductPageLayout = ({ title, description, imageSrc }) => {
                 </div>
                 <div className="md:w-1/4 flex justify-center md:justify-start bg-primary p-9 rounded-md">
                     <div className="w-full max-w-md">
-                    <div className="bg-primary text-white p-4 text-center rounded-md">
-                    <h2 className="text-xl md:text-4xl font-bold">{t('Contact us')}</h2>
-                </div>
+                        <div className="bg-primary text-white p-4 text-center rounded-md">
+                            <h2 className="text-xl md:text-4xl font-bold">{t('Contact us')}</h2>
+                        </div>
                         <ContactForm />
                     </div>
                 </div>

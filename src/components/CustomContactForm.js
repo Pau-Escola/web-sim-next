@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CustomContactForm = ({ basket }) => {
+const CustomContactForm = ({ basket, onRemoveFromBasket}) => {
     const { t } = useTranslation();
     const [contact, setContact] = useState({ from_name: '', reply_to: '', message: '', contact_phone: '' });
     const handleChange = (e) => {
@@ -10,7 +10,6 @@ const CustomContactForm = ({ basket }) => {
 
     return (
         <div className="contact-form bg-white shadow-md rounded-lg p-4 mt-8">
-            <h2 className="text-xl font-bold mb-4">Contact Us</h2>
             <form>
             <div className="mb-4">
                 <label htmlFor="from_name" className="block text-gray-700 text-sm font-bold mb-2">{t('Name')}</label>
@@ -68,7 +67,15 @@ const CustomContactForm = ({ basket }) => {
                     <h3 className="text-lg font-semibold">Basket Items:</h3>
                     <ul>
                         {basket.map((product, index) => (
-                            <li key={index}>{product.title} - {product.price}</li>
+                            <li key={index} className="flex justify-between items-center mb-2">
+                            <span>{product.title}</span>
+                            <button
+                                onClick={() => onRemoveFromBasket(product.id)}
+                                className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-700 transition"
+                            >
+                                Remove
+                            </button>
+                        </li>
                         ))}
                     </ul>
                 </div>

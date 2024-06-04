@@ -113,7 +113,8 @@ const Carousel = ({ images, interval = 7000, objectFit }) => {
                             objectFit={objectFit}
                             objectPosition={image.position || 'center center'}
                         />
-                        <div className="absolute top-3/4 md:top-1/2 right-0 md:transform md:top-1/2 md:m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-white">
+                        { (image.title && image.text && image.url) &&
+                        (<div className="absolute top-3/4 md:top-1/2 right-0 md:transform md:top-1/2 md:m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-white">
                             <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{t(image.title)}</h2>
                             <p className="text-sm sm:text-base md:text-lg mb-4">{t(image.text)}</p>
                             <Link href={image.url} legacyBehavior>
@@ -123,7 +124,7 @@ const Carousel = ({ images, interval = 7000, objectFit }) => {
                                     </button>
                                 </a>
                             </Link>
-                        </div>
+                        </div>)}
                     </div>
                 ))}
             </div>
