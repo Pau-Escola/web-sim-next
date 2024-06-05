@@ -9,6 +9,7 @@ import CustomContactForm from '../../components/CustomContactForm';
 import { useTranslation } from 'react-i18next';
 import casetaOcasioImage from '../../../public/images/homepage/ocasio-1.JPG';
 import casetaOcasioImag from '../../../public/images/homepage/contenidor-1.JPG';
+import { FaShoppingBasket } from 'react-icons/fa';
 
 
 const products = [
@@ -130,8 +131,13 @@ const products = [
 
 const SalesPage = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showContactForm, setShowContactForm] = useState(false);
     const [basket, setBasket] = useState([]);
     const { t } = useTranslation();
+
+    const handleToggleContactForm = () => {
+        setShowContactForm(!showContactForm);
+    };
 
     const handleAddToBasket = (product) => {
         setBasket([...basket, product]);
@@ -155,6 +161,16 @@ const SalesPage = () => {
                 <title>Sales</title>
             </Head>
             <NavBar />
+            <div className="fixed top-1/2 right-0 m-4 bg-primary text-white  rounded-full p-2 cursor-pointer z-50">
+                <FaShoppingBasket size={50} onClick={handleToggleContactForm} />
+            </div>
+
+            {/* Floating point content */}
+            {showContactForm && (
+                <div className="fixed inset-0 flex items-center justify-center z-50">
+                    <CustomContactForm basket={basket} onRemoveFromBasket={handleRemoveFromBasket} onClose={handleToggleContactForm}/>
+                </div>
+            )}
             <div className="relative h-64 w-full md:h-96 mb-8">
                 <Image src={casetaOcasioImage} alt={t('Sale')} layout="fill" objectFit="cover"/>
                 <div className="absolute bottom-0 left-0 bg-primary text-white p-4 rounded-md">
@@ -164,7 +180,7 @@ const SalesPage = () => {
                 <p className="text-lg text-center">{t('Sale Text')}</p>
             <div className="flex flex-col md:flex-row items-center justify-center px-4 md:px-8">
                 <div className="md:w-3/4 flex flex-col items-center md:items-start mb-8 md:mb-0">
-                    <section className="product-display-section my-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {products.map((product) => (
                             <ProductCard
                                 key={product.id}
@@ -177,20 +193,14 @@ const SalesPage = () => {
                         ))}
                     </section>
                 </div>
-                <div className="md:w-1/4 flex justify-center md:justify-start bg-primary p-9 rounded-md">
-                    <div className="w-full max-w-md">
-                        <div className="bg-primary text-white p-4 text-center rounded-md">
-                            <h2 className="text-xl md:text-4xl font-bold">{t('Contact us')}</h2>
-                        </div>
-                        <CustomContactForm basket={basket} onRemoveFromBasket={handleRemoveFromBasket}/>
-                    </div>
-                </div>
+                
                 {selectedProduct && (
                     <ProductModal
                         product={selectedProduct}
                         onClose={handleCloseModal}
                         onAddToBasket={handleAddToBasket}
                         onRemoveFromBasket={handleRemoveFromBasket}
+                        isInBasket={basket.includes(selectedProduct)}
                     />
                 )}
             </div>

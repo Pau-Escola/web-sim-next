@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaTrashAlt, FaTimes } from 'react-icons/fa';
 
-const CustomContactForm = ({ basket, onRemoveFromBasket}) => {
+const CustomContactForm = ({ basket, onRemoveFromBasket, onClose}) => {
     const { t } = useTranslation();
     const [contact, setContact] = useState({ from_name: '', reply_to: '', message: '', contact_phone: '' });
     const handleChange = (e) => {
@@ -10,6 +11,9 @@ const CustomContactForm = ({ basket, onRemoveFromBasket}) => {
 
     return (
         <div className="contact-form bg-white shadow-md rounded-lg p-4 mt-8">
+            <button  onClick={onClose}>
+                <FaTimes size={24} />
+            </button>
             <form>
             <div className="mb-4">
                 <label htmlFor="from_name" className="block text-gray-700 text-sm font-bold mb-2">{t('Name')}</label>
@@ -73,7 +77,7 @@ const CustomContactForm = ({ basket, onRemoveFromBasket}) => {
                                 onClick={() => onRemoveFromBasket(product.id)}
                                 className="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-700 transition"
                             >
-                                Remove
+                                 <FaTrashAlt size={20} />
                             </button>
                         </li>
                         ))}
