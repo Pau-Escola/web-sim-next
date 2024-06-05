@@ -161,8 +161,8 @@ const SalesPage = () => {
                 <title>Sales</title>
             </Head>
             <NavBar />
-            <div className="fixed top-1/2 right-0 m-4 bg-primary text-white  rounded-full p-2 cursor-pointer z-50">
-                <FaShoppingBasket size={50} onClick={handleToggleContactForm} />
+            <div className="fixed bottom-0 right-0 m-4 bg-primary text-white  rounded-full p-2 cursor-pointer z-50">
+                <FaShoppingBasket size={40} onClick={handleToggleContactForm} />
             </div>
 
             {/* Floating point content */}
