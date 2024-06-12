@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect  } from 'react';
 import emailjs from 'emailjs-com';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
 
-const ContactForm = () => {
+const ContactForm = ({ product }) => {
     const { t } = useTranslation();
-    const [contact, setContact] = useState({ from_name: '', reply_to: '', message: '', contact_phone: '' });
+    const [contact, setContact] = useState({ from_name: '', reply_to: '', message: '', contact_phone: '', reference:'' });
     const [isSubmitting, setIsSubmitting] = useState(false); // State to track submission status
     const [isAgreed, setIsAgreed] = useState(false);
     useEffect(() => {
@@ -40,56 +41,75 @@ const ContactForm = () => {
             });
     };
 
+    contact.reference = product? 'Interessat en producte amb referencia ' + product.title : '';
+
+
     return (
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto py-4 px-8 bg-white shadow-md rounded-lg">
+        <div className="p-4 bg-white rounded-lg shadow-md">
+            <h2 className="text-xl font-bold mb-4">{t('Ask for quote')}</h2>
+            {product && (
+                <>
+                 <p className="mb-4 flex items-center">
+                 <strong>{product.title}</strong>
+                </p>
+                <Image
+                     src={product.images[0]}
+                     alt={product.title}
+                     width={150} // Adjust the width as needed
+                     height={150} // Adjust the height as needed
+                     className="ml-2" // Add margin for spacing if necessary
+                />
+                 </>
+            )}
+             <form onSubmit={handleSubmit} className="max-w-lg mx-auto py-4 px-8 bg-white shadow-md rounded-lg">
             <div className="mb-4">
-                <label htmlFor="from_name" className="block text-gray-700 text-sm font-bold mb-2">{t('Name')}</label>
+                <label htmlFor="from_name" className="block text-gray-700 text-sm font-bold mb-2"></label>
                 <input
                     type="text"
                     name="from_name"
                     id="from_name"
                     value={contact.from_name}
                     onChange={handleChange}
-                    placeholder={t('Name PlaceHolder')}
+                    placeholder={t('Name')}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 />
             </div>
             <div className="mb-4">
-                <label htmlFor="contact_phone" className="block text-gray-700 text-sm font-bold mb-2">{t('Phone')}</label>
+                <label htmlFor="contact_phone" className="block text-gray-700 text-sm font-bold mb-2"></label>
                 <input
                     type="phone"
                     name="contact_phone"
                     id="contact_phone"
                     value={contact.contact_phone}
                     onChange={handleChange}
-                    placeholder={t('Phone PlaceHolder')}
+                    placeholder={t('Phone')}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 />
             </div>
             <div className="mb-4">
-                <label htmlFor="reply_to" className="block text-gray-700 text-sm font-bold mb-2">{t('Email')}</label>
+                <label htmlFor="reply_to" className="block text-gray-700 text-sm font-bold mb-2"></label>
                 <input
                     type="email"
                     name="reply_to"
                     id="reply_to"
                     value={contact.reply_to}
                     onChange={handleChange}
-                    placeholder={t('Email PlaceHolder')}
+                    placeholder={t('Email')}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 />
             </div>
             <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">{t('Message')}</label>
+                <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2"></label>
                 <textarea
                     name="message"
                     id="message"
                     value={contact.message}
                     onChange={handleChange}
                     rows="4"
-                    placeholder={t('Message PlaceHolder')}
+                    placeholder={t('Message')}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 ></textarea>
@@ -111,7 +131,8 @@ const ContactForm = () => {
                 </button>
             </div>
         </form>
+        </div>
     );
-}
+};
 
 export default ContactForm;

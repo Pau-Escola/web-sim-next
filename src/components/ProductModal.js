@@ -1,11 +1,11 @@
 // components/ProductModal.js
 import React, { useState } from 'react';
-import CustomContactForm from './CustomContactForm';
+import ContactForm from './ContactForm';
 import Carousel from './Carousel'; // Importing bin icon from react-icons
 
 const ProductModal = ({ product, onClose, onAddToBasket, onRemoveFromBasket, isInBasket }) => {
     const [contactOpen, setContactOpen] = useState(false);
-    
+
     if (!product) return null;
 
     return (
@@ -38,7 +38,7 @@ const ProductModal = ({ product, onClose, onAddToBasket, onRemoveFromBasket, isI
                             >
                                 &times;
                             </button>
-                            <CustomContactForm product={product} />
+                            <ContactForm product={product} />
                         </div>
                     </div>
                 )}
