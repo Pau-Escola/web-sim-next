@@ -7,7 +7,7 @@ const ProductCard = ({ product, onSelectProduct}) => {
         <div 
             className="relative shadow-xl rounded-lg overflow-hidden h-64 md:h-64 lg:h-80 group cursor-pointer" 
             onClick={() => onSelectProduct(product)} 
-            style={{ width: '25vh', height: '20vh' }}
+            style={{ width: '25vh', height: '25vh' }}
         >
                 <Image
                     src={product.images[0]}
