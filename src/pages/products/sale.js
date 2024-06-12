@@ -5,11 +5,9 @@ import NavBar from '../../components/NavBar';
 import ContactInfoFooter from '../../components/ContactInfoFooter';
 import ProductCard from '../../components/ProductCard';
 import ProductModal from '../../components/ProductModal';
-import CustomContactForm from '../../components/CustomContactForm';
 import { useTranslation } from 'react-i18next';
 import casetaOcasioImage from '../../../public/images/homepage/ocasio-1.JPG';
 import casetaOcasioImag from '../../../public/images/homepage/contenidor-1.JPG';
-import { FaShoppingBasket } from 'react-icons/fa';
 
 
 const products = [
@@ -131,24 +129,10 @@ const products = [
 
 const SalesPage = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [showContactForm, setShowContactForm] = useState(false);
-    const [basket, setBasket] = useState([]);
     const { t } = useTranslation();
-
-    const handleToggleContactForm = () => {
-        setShowContactForm(!showContactForm);
-    };
-
-    const handleAddToBasket = (product) => {
-        setBasket([...basket, product]);
-    };
 
     const handleSelectProduct = (product) => {
         setSelectedProduct(product);
-    };
-
-    const handleRemoveFromBasket = (productId) => {
-        setBasket(basket.filter((product) => product.id !== productId));
     };
 
     const handleCloseModal = () => {
@@ -161,16 +145,7 @@ const SalesPage = () => {
                 <title>Sales</title>
             </Head>
             <NavBar />
-            <div className="fixed bottom-0 right-0 m-4 bg-primary text-white  rounded-full p-2 cursor-pointer z-50">
-                <FaShoppingBasket size={40} onClick={handleToggleContactForm} />
-            </div>
 
-            {/* Floating point content */}
-            {showContactForm && (
-                <div className="fixed inset-0 flex items-center justify-center z-50">
-                    <CustomContactForm basket={basket} onRemoveFromBasket={handleRemoveFromBasket} onClose={handleToggleContactForm}/>
-                </div>
-            )}
             <div className="relative h-64 w-full md:h-96 mb-8">
                 <Image src={casetaOcasioImage} alt={t('Sale')} layout="fill" objectFit="cover"/>
                 <div className="absolute bottom-0 left-0 bg-primary text-white p-4 rounded-md">
@@ -179,16 +154,13 @@ const SalesPage = () => {
             </div>
                 <p className="text-lg text-center">{t('Sale Text')}</p>
             <div className="flex flex-col md:flex-row items-center justify-center px-4 md:px-8">
-                <div className="md:w-3/4 flex flex-col items-center md:items-start mb-8 md:mb-0">
+                <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
                     <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {products.map((product) => (
                             <ProductCard
                                 key={product.id}
                                 product={product}
-                                onAddToBasket={handleAddToBasket}
-                                onRemoveFromBasket={handleRemoveFromBasket}
                                 onSelectProduct={handleSelectProduct}
-                                isInBasket={basket.includes(product)}
                             />
                         ))}
                     </section>
@@ -198,9 +170,6 @@ const SalesPage = () => {
                     <ProductModal
                         product={selectedProduct}
                         onClose={handleCloseModal}
-                        onAddToBasket={handleAddToBasket}
-                        onRemoveFromBasket={handleRemoveFromBasket}
-                        isInBasket={basket.includes(selectedProduct)}
                     />
                 )}
             </div>

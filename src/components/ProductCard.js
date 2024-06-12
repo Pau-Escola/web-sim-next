@@ -2,14 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import { FaTrashAlt } from 'react-icons/fa'; // Importing bin icon from react-icons
 
-const ProductCard = ({ product, onRemoveFromBasket, onSelectProduct, isInBasket }) => {
+const ProductCard = ({ product, onSelectProduct}) => {
     return (
         <div 
             className="relative shadow-xl rounded-lg overflow-hidden h-64 md:h-64 lg:h-80 group cursor-pointer" 
             onClick={() => onSelectProduct(product)} 
-            style={{ width: '45vw', height: '40vw' }}
+            style={{ width: '20vh', height: '20vh' }}
         >
-            
                 <Image
                     src={product.images[0]}
                     alt={product.title}
@@ -25,17 +24,6 @@ const ProductCard = ({ product, onRemoveFromBasket, onSelectProduct, isInBasket 
                         <span className="text-white text-l md:text-xl font-semibold">{product.price}</span>
                     </div>
                 </div>
-                {isInBasket && (
-                    <button
-                        className="bg-red-500 text-white p-2 rounded-md absolute top-0 right-0 m-2"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onRemoveFromBasket(product.id);
-                        }}
-                    >
-                        <FaTrashAlt size={20} />
-                    </button>
-                )}
             </div>
         </div>
     );
