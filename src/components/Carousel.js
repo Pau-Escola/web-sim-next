@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
-const Carousel = ({ images, interval = 7000, objectFit }) => {
+const Carousel = ({ images, interval = 7000, objectFit, encoded }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
@@ -14,6 +14,11 @@ const Carousel = ({ images, interval = 7000, objectFit }) => {
     const { t } = useTranslation();
 
     const minSwipeDistance = 50;
+
+    const bufferToBase64 = (buffer) => {
+        const binary = Buffer.from(buffer).toString('base64');
+        return `data:image/jpeg;base64,${binary}`;
+    };
 
     useEffect(() => {
         autoSlideRef.current = goToNext;
@@ -107,7 +112,7 @@ const Carousel = ({ images, interval = 7000, objectFit }) => {
                         className="w-full h-full flex-shrink-0 relative"
                     >
                         <Image
-                            src={image.src}
+                            src={encoded? bufferToBase64(image.imageData.data) :image.src}
                             alt={image.alt || 'Image'}
                             layout="fill"
                             objectFit={objectFit}
