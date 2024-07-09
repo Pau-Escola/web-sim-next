@@ -1,14 +1,22 @@
 import React from 'react';
 import Head from 'next/head';
-import ProductPageLayout from '../../components/ProductPageLayout';
-import { useTranslation } from 'react-i18next';
-import reparacioCanteraImage from '../../../public/images/homepage/reparacio-cantera.jpg';
+import MaintenancePageLayout from '../../components/MaintenancePageLayout';
+import reparacioCanteraImage from '../../../public/images/homepage/reparacio.jpeg';
+import { getTranslation } from '../../lib/getTranslation';
 
-function MaintenancePage() {
-    const { t } = useTranslation();
+export async function getStaticProps() {
+  const translations = getTranslation('es');
+  return {
+    props: {
+      translations,
+    },
+  };
+}
 
-    const title = t('Maintenance');
-    const description = t('Maintenance Text');
+function MaintenancePage({translations}) {
+
+    const title = translations['Maintenance'];
+    const description = translations['Maintenance Text'];
     const imageSrc = reparacioCanteraImage;
 
     return (
@@ -16,7 +24,7 @@ function MaintenancePage() {
             <Head>
                 <title>{title}</title>
             </Head>
-            <ProductPageLayout title={title} description={description} imageSrc={imageSrc} />
+            <MaintenancePageLayout translations={translations} locale="/"/>
         </>
     );
 }

@@ -2,18 +2,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.simreus.com/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-07-08</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://www.simreus.com/ca</loc>
-    <lastmod>2024-05-22</lastmod>
+    <loc>https://www.simreus.com/ca/inici</loc>
+    <lastmod>2024-07-08</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.simreus.com/en</loc>
-    <lastmod>2024-05-22</lastmod>
+    <loc>https://www.simreus.com/en/home</loc>
+    <lastmod>2024-07-08</lastmod>
     <priority>0.80</priority>
   </url>
+  <url>
+    <loc>https://www.simreus.com/products/building</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/products/cabin</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/products/container</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/products/maintenance</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/products/prefab</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/products/sale</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/legal-policies</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/en/products/building</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/en/products/cabin</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/en/products/container</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/en/products/maintenance</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/en/products/prefab</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/en/products/sale</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/en/legal-policies</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/ca/products/building</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/ca/products/cabin</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/ca/products/container</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/ca/products/maintenance</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/ca/products/prefab</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/ca/products/sale</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://www.simreus.com/ca/legal-policies</loc>
+    <lastmod>2024-07-08</lastmod>
+    <priority>0.64</priority>
+  </url>
 </urlset>
-

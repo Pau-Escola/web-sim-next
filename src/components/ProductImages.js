@@ -5,11 +5,6 @@ import axios from 'axios';
 const ProductImages = ({ images, token, fetchProduct, productId }) => {
     const fileInputRef = useRef(null);
 
-    const bufferToBase64 = (buffer) => {
-        const binary = Buffer.from(buffer).toString('base64');
-        return `data:image/jpeg;base64,${binary}`;
-    };
-
     const handleDelete = async (imageId) => {
         if (images.length === 1) {
             alert('Product must have at least one image');
@@ -65,14 +60,19 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full h-full">
             {images.map((image, index) => (
                 <div key={index} className="w-full h-full flex-shrink-0 relative">
-                    <Image
-                        src={bufferToBase64(image.imageData.data)}
-                        alt={image.alt || 'Image'}
-                        layout="responsive"
-                        width={500}
-                        height={500}
-                        className="w-full h-auto object-cover"
-                    />
+                    <picture>
+                        <source srcSet={`http://localhost:4000${image.imageUrls[1200]}`} media="(min-width: 1200px)" />
+                        <source srcSet={`http://localhost:4000${image.imageUrls[800]}`} media="(min-width: 800px)" />
+                        <Image
+                            src={`http://localhost:4000${image.imageUrls[400]}`}
+                            alt={image.alt || 'Image'}
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            className="w-full h-auto object-cover"
+                            loading="lazy"
+                        />
+                    </picture>
                     <button
                         onClick={() => handleDelete(image.id)}
                         className="absolute top-2 right-2 bg-red-600 font-bold text-white p-2 rounded"

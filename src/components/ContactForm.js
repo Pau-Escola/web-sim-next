@@ -1,17 +1,21 @@
 import React, { useState, useEffect  } from 'react';
 import emailjs from 'emailjs-com';
-import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const ContactForm = ({ product }) => {
-    const { t } = useTranslation();
+const ContactForm = ({ product, translations, locale }) => {
     const [contact, setContact] = useState({ from_name: '', reply_to: '', message: '', contact_phone: '', reference:'' });
     const [isSubmitting, setIsSubmitting] = useState(false); // State to track submission status
     const [isAgreed, setIsAgreed] = useState(false);
+    const mainImage = product?.images.find(image => image.isMain === true);
     useEffect(() => {
         emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER_ID); // Initialize EmailJS with your user ID
     }, []);
+
+    const bufferToBase64 = (buffer) => {
+        const binary = Buffer.from(buffer).toString('base64');
+        return `data:image/jpeg;base64,${binary}`;
+    };
 
     const handleChange = (e) => {
         setContact({ ...contact, [e.target.name]: e.target.value });
@@ -24,7 +28,7 @@ const ContactForm = ({ product }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!isAgreed) {
-            alert(t('Accept Policies Alert'));
+            alert(translations['Accept Policies Alert']);
             return;
         }
         setIsSubmitting(true); // Disable the submit button when the form is submitted
@@ -32,11 +36,11 @@ const ContactForm = ({ product }) => {
         emailjs.send( process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, contact, process.env.NEXT_PUBLIC_EMAILJS_USER_ID)
             .then((result) => {
                 console.log(result.text);
-                alert(t('Sent Success'));
+                alert(translations['Sent Success']);
                 setIsSubmitting(false); // Re-enable the submit button after successful submission
             }, (error) => {
                 console.log(error.text);
-                alert(t('Sent Failure'));
+                alert(translations['Sent Failure']);
                 setIsSubmitting(false); // Re-enable the submit button even if there's an error
             });
     };
@@ -46,14 +50,14 @@ const ContactForm = ({ product }) => {
 
     return (
         <div className="p-4 bg-white rounded-lg shadow-md">
-            <h2 className="text-xl font-bold mb-4">{t('Ask for quote')}</h2>
+            <h2 className="text-xl font-bold mb-4">{translations['Ask for quote']}</h2>
             {product && (
                 <>
                  <p className="mb-4 flex items-center">
                  <strong>{product.title}</strong>
                 </p>
                 <Image
-                     src={product.images[0]}
+                     src={bufferToBase64(mainImage.imageData.data)}
                      alt={product.title}
                      width={150} // Adjust the width as needed
                      height={150} // Adjust the height as needed
@@ -70,7 +74,7 @@ const ContactForm = ({ product }) => {
                     id="from_name"
                     value={contact.from_name}
                     onChange={handleChange}
-                    placeholder={t('Name')}
+                    placeholder={translations['Name']}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 />
@@ -83,7 +87,7 @@ const ContactForm = ({ product }) => {
                     id="contact_phone"
                     value={contact.contact_phone}
                     onChange={handleChange}
-                    placeholder={t('Phone')}
+                    placeholder={translations['Phone']}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 />
@@ -96,7 +100,7 @@ const ContactForm = ({ product }) => {
                     id="reply_to"
                     value={contact.reply_to}
                     onChange={handleChange}
-                    placeholder={t('Email')}
+                    placeholder={translations['Email']}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 />
@@ -109,7 +113,7 @@ const ContactForm = ({ product }) => {
                     value={contact.message}
                     onChange={handleChange}
                     rows="4"
-                    placeholder={t('Message')}
+                    placeholder={translations['Message']}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     required
                 ></textarea>
@@ -117,17 +121,17 @@ const ContactForm = ({ product }) => {
             <div>
             <label htmlFor="checkbox" />
                 <input type="checkbox" checked={isAgreed} onChange={handleCheckboxChange} />
-                <span className="text-black">{t('I agree')} 
-                    <Link href="/legal-policies"  legacyBehavior>
+                <span className="text-black">{translations['I agree']} 
+                    <Link href={locale+"legal-policies"}  legacyBehavior>
                         <a className="text-blue-500">
-                            {t('Data Policies')}
+                            {translations['Data Policies']}
                         </a>
                     </Link>.
                 </span>
             </div>
             <div>
                 <button type="submit" disabled={isSubmitting} className="bg-primary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    {isSubmitting ? t('Sending') : t('Send')}
+                    {isSubmitting ? translations['Sending'] : translations['Send']}
                 </button>
             </div>
         </form>

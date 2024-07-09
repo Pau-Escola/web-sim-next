@@ -1,22 +1,21 @@
 import React from 'react';
-import Head from 'next/head';
-import ProductPageLayout from '../../components/ProductPageLayout';
-import { useTranslation } from 'react-i18next';
-import cabinIconImage from '../../../public/images/homepage/refugi-de-camp.png';
+import CabinPageLayout from '../../components/CabinPageLayout';
+import { getTranslation } from '../../lib/getTranslation';
 
-function CabinPage() {
-    const { t } = useTranslation();
+export async function getStaticProps() {
+  const translations = getTranslation('es');
+  return {
+    props: {
+      translations,
+    },
+  };
+}
 
-    const title = t('Cabin');
-    const description = t('Cabin Text');
-    const imageSrc = cabinIconImage;
+function CabinPage({translations}) {
 
     return (
         <>
-            <Head>
-                <title>{title}</title>
-            </Head>
-            <ProductPageLayout title={title} description={description} imageSrc={imageSrc} />
+            <CabinPageLayout translations={translations} locale="/" />
         </>
     );
 }

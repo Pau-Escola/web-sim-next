@@ -59,12 +59,453 @@
     "Data Policies":"Política de privacidad",
     "I agree" : " Acepto ",
     "Accept Policies Alert" : "Tienes que aceptar nuestra política de privacidad antes the poder enviar el mensaje",
-    "Rights Reserved":"© {{year}} Todos los derechos reservados. Solucions Integrals Modulars S.L.U. ",
+    "Rights Reserved":"Todos los derechos reservados. Solucions Integrals Modulars S.L.U. ",
     "Why Prefabs": "Ventajas de la construcción modular",
     "Why Prefabs Text": " Adopta el futuro de la construcción con las soluciones de edificación prefabricada, un enfoque revolucionario que redefine el panorama de la industria. La construcción prefabricada ofrece una alternativa incomparable a los métodos convencionales, brindando una miríada de ventajas que elevan tu proyecto a nuevas alturas. Sumérgete en el mundo de la prefabricación y descubre un universo de posibilidades que satisfacen todas tus necesidades.<br><br>En el corazón de la construcción prefabricada reside su inherente rentabilidad, resultado de procesos meticulosamente optimizados que revolucionan la forma en que se erigen los edificios. Di adiós a los gastos exorbitantes en mano de obra y al uso desmedido de materiales. Abraza una ética sostenible que defiende la conservación del medio ambiente mediante la minimización de residuos y la mejora de la eficiencia energética.<br><br>Adéntrate en un mundo de eficiencia incomparable, donde la fabricación controlada en fábrica garantiza precisión y previsibilidad en cada paso. Con la prefabricación, no solo estás construyendo estructuras; estás esculpiendo el futuro con una velocidad y agilidad sin precedentes. Experimenta plazos reducidos a la mitad, ya que los componentes prefabricados se integran sin problemas con la preparación del sitio, entregando proyectos en tiempo récord.<br><br>Pero los beneficios no terminan ahí. Las estructuras prefabricadas cuentan con una flexibilidad y escalabilidad sin igual, adaptándose sin esfuerzo a tu visión única y necesidades cambiantes. Ya sea refugios residenciales o bulliciosos centros comerciales, la prefabricación ofrece un lienzo para la creatividad sin límites. Personaliza, adapta y expande con facilidad, sabiendo que tu creación prefabricada es tan dinámica como tu imaginación.<br><br>Y no olvidemos la ventaja urbana. Con la construcción fuera del sitio, despídete del caos de los sitios de construcción tradicionales. Saluda a la paz y tranquilidad mientras se minimizan el ruido, el polvo y las molestias, creando ambientes armoniosos en los bulliciosos paisajes urbanos.<br><br>Desbloquea el potencial de la construcción prefabricada y embarca en un viaje donde la innovación se encuentra con la practicidad. Únete a la revolución de la prefabricación hoy mismo y sé testigo del poder transformador de la construcción avanzada.",
     "Cost-efficient":"Bajo costo",
     "Mobile": "Móvil",
     "Scalable": "Escalable",
     "Fast": "Rápido",
-    "View Product": "Ver producto"
-    }
+    "size":"Medidas",
+    "View Product": "Ver producto",
+    "All":"Todos",
+    "Product Sold":"VENDIDO",
+    "Product Booked":"RESERVADO",
+    "Slogan":{
+      "First":"Tu visión,",
+      "Second": "Nuestros módulos."
+    },
+    "Containers": {
+        "cabinRedirect": "Descubre nuestros refugios de campo",
+        "saleRedirect": "Visita nuestro stock",
+          "Uses of Containers": {
+            "Title": "Usos de los contenedores",
+            "Intro": "Los contenedores ya no son solo para el envío. Han evolucionado hacia soluciones versátiles para una miríada de aplicaciones. Aquí algunos de los usos más populares y las ventajas que ofrecen",
+            "Storage Solutions": {
+              "Title": "Soluciones de almacenamiento",
+              "Text": "Seguros y resistentes a la intemperie, los contenedores ofrecen excelentes opciones de almacenamiento tanto para necesidades personales como empresariales. Ya sea para almacenar equipos, inventario o artículos personales, los contenedores mantienen sus pertenencias seguras y secas."
+            },
+            "Mobile Offices": {
+              "Title": "Oficinas móviles",
+              "Text": "Transforme un contenedor en un espacio de oficina totalmente funcional. Ideal para sitios de construcción, ubicaciones remotas o eventos, un contenedor ofrece una solución rápida y económica para sus necesidades de oficina."
+            },
+            "Retail Spaces": {
+              "Title": "Espacios comerciales",
+              "Text": "Cree un entorno de venta al por menor único y portátil. Desde tiendas emergentes hasta locales permanentes, los contenedores ofrecen una opción flexible y moderna para su negocio."
+            },
+            "Living Spaces": {
+              "Title": "Espacios habitables",
+              "Text": "Adopte el movimiento de las pequeñas casas con contenedores, que se pueden modificar para incluir todas las comodidades de una casa moderna. Son perfectos para refugios de campo, habitaciones de invitados o casas de vacaciones."
+            },
+            "Workshops and Studios": {
+              "Title": "Talleres y estudios",
+              "Text": "¿Necesita espacio adicional para un taller o estudio de arte? Los contenedores ofrecen un entorno sólido y adaptable donde puede trabajar y crear."
+            }
+          },
+          "Advantages of Containers": {
+            "Title": "Ventajas de los Contenedores",
+            "Durability": {
+              "Title": "Durabilidad",
+              "Text": "Construidos para resistir condiciones adversas, los contenedores son fuertes, seguros y duraderos."
+            },
+            "Flexibility": {
+              "Title": "Flexibilidad",
+              "Text": "Disponibles en varias tamaños y personalizables para adaptarse a sus necesidades específicas."
+            },
+            "Cost-Effective": {
+              "Title": "Rentable",
+              "Text": "Más asequibles que la construcción tradicional, los contenedores ofrecen una solución económica sin comprometer la calidad."
+            },
+            "Quick Setup": {
+              "Title": "Configuración Rápida",
+              "Text": "Entregados e instalados rápidamente, para que pueda usar el espacio más pronto."
+            },
+            "Eco-Friendly": {
+              "Title": "Ecológico",
+              "Text": "Al reutilizar contenedores, está haciendo una elección sostenible que ayuda a reducir residuos y apoya prácticas de construcción ecológica."
+            }
+          },
+          "Contract Containers": {
+            "Title": "Quiero un contenedor",
+            "Intro": "¿Busca un contenedor? Aquí tiene sus opciones",
+            "Rent": {
+              "Title": "Alquiler",
+              "Wide Selection": {
+                "Title": "Amplia selección",
+                "Text": "Explore nuestro extenso inventario para encontrar el tamaño y tipo de contenedor perfecto para sus necesidades."
+              },
+              "Flexible Terms": {
+                "Title": "Condiciones flexibles",
+                "Text": "Elija entre contratos de alquiler a corto o largo plazo adaptados a los requisitos de su proyecto."
+              },
+              "Maintenance Included": {
+                "Title": "Mantenimiento",
+                "Text": "Disfrute de la tranquilidad con mantenimiento y soporte incluidos para mantener su contenedor en óptimas condiciones."
+              }
+            },
+            "Secondhand Containers": {
+              "Title": "Segunda mano",
+              "Cargo Worthy": {
+                "Title": "Certificados aptos para el transporte",
+                "Text": "Nuestros contenedores de segunda mano son CARGO WORTHY, certificados para garantizar su integridad estructural."
+              },
+              "Selection Process": {
+                "Title": "Proceso de selección",
+                "Text": "Visítenos para inspeccionar y seleccionar un contenedor que cumpla con sus estándares o consulte en línea."
+              },
+              "Cost-Effective": {
+                "Title": "Económico",
+                "Text": "Opciones económicas sin comprometer la calidad o durabilidad."
+              }
+            },
+            "New Containers": {
+              "Title": "Contenedores nuevos",
+              "Brand New Options": {
+                "Title": "Muchas pciones",
+                "Text": "Explore una variedad de contenedores que están listos para satisfacer sus necesidades directamente del estante."
+              },
+              "Expert Guidance": {
+                "Title": "Asesoramiento experto",
+                "Text": "Nuestro equipo experto ofrece consejos y soporte durante todo el proceso de compra."
+              }
+            }
+          },
+          "Services Containers": {
+            "Title": "Nuestros servicios",
+            "Intro": "Personalización y conveniencia adaptadas a usted",
+            "Custom Painting": {
+              "Title": "Pintura personalizada",
+              "Text": "Elija entre una amplia gama de colores para combinar con su marca, propiedad o preferencia personal, y nuestro servicio profesional de pintura asegurará un acabado duradero y de alta calidad que resista los elementos."
+            },
+            "Modifications": {
+              "Title": "Modificaciones",
+              "Text": "Nuestro equipo calificado trabaja estrechamente con usted para diseñar y ejecutar modificaciones para crear una solución personalizada."
+            },
+            "Transportation": {
+              "Title": "Transporte",
+              "Text": "Eliminamos las molestias logísticas  utilizando camiones con grúa para entregar y colocar su contenedor, asegurando que llegue de manera segura y puntual, ya sea en la ciudad o en un lugar remoto."
+            }
+          }
+        },
+    "Prefab": {
+        "saleRedirect": "Visita nuestro stock",
+            "Uses and Advantages": {
+              "Title": "El Mundo Versátil de los Prefabricados Modulares: Usos y Ventajas",
+              "Intro": "En el panorama de la construcción en evolución, lacasetas o módulos se han convertido en una solución innovadora. Estos módulos, construidos fuera del sitio, se transportan y ensamblan en el lugar, ofreciendo eficiencia y flexibilidad para diversas aplicaciones.",
+              "What are Modular Prefabs?": {
+                "Title": "¿Qué son los Prefabricados Modulares?",
+                "Text": "Los módulos son cubículos hechos en entornos controlados de fábrica. Llegan al sitio listos para usar, requiriendo solo la conexión a servicios públicos y, si es necesario, la unión de múltiples módulos para espacios más grandes. Este método acelera significativamente el proceso de construcción manteniendo una alta calidad."
+              }
+            },
+            "Why Choose Modular Prefabs?": {
+              "Title": "¿Por qué elegir módulares?",
+              "Text": "Con una construcción rápida, rentabilidad y acabados de alta calidad, los prefabricados modulares revolucionan la construcción. Ya sea para oficinas, aulas o viviendas, ofrecen soluciones inteligentes, eficientes y flexibles. Explore las posibilidades ilimitadas con los prefabricados modulares hoy. Contáctenos para saber más sobre cómo crear el espacio perfecto con nuestras soluciones de prefabricados modulares de primera calidad."
+            },
+            "Uses of Modular Prefabs": {
+              "Title": "Usos de los Prefabricados Modulares",
+              "Residential Housing": {
+                "Title": "Vivienda Residencial",
+                "Tiny Homes": {
+                  "Title": "Casas Pequeñas",
+                  "Text": "Espacios de vida eficientes, sostenibles y elegantes."
+                },
+                "Affordable Housing": {
+                  "Title": "Vivienda Asequible",
+                  "Text": "Despliegue rápidamente casas de alta calidad y duraderas para comunidades."
+                },
+                "Guest Houses": {
+                  "Title": "Casas de Huéspedes",
+                  "Text": "Agregue una casa de huéspedes sin largos tiempos de espera ni altos costos."
+                }
+              },
+              "Commercial Spaces": {
+                "Title": "Espacios Comerciales",
+                "Offices": {
+                  "Title": "Oficinas",
+                  "Text": "Espacios de oficina modernos y funcionales que crecen con su negocio."
+                },
+                "Retail Stores": {
+                  "Title": "Tiendas Minoristas",
+                  "Text": "Opciones flexibles y modernas para tiendas emergentes o permanentes."
+                },
+                "Cafes and Restaurants": {
+                  "Title": "Cafés y Restaurantes",
+                  "Text": "Experiencias gastronómicas personalizadas adaptadas a sus necesidades."
+                }
+              },
+              "Educational Facilities": {
+                "Title": "Instalaciones Educativas",
+                "Classrooms": {
+                  "Title": "Aulas",
+                  "Text": "Entornos de aprendizaje cómodos y propicios."
+                },
+                "Laboratories": {
+                  "Title": "Laboratorios",
+                  "Text": "Espacios completamente equipados que cumplen con todas las normas de seguridad."
+                }
+              },
+              "Healthcare Facilities": {
+                "Title": "Instalaciones de Salud",
+                "Clinics": {
+                  "Title": "Clínicas",
+                  "Text": "Clínicas desplegadas rápidamente para áreas remotas o desatendidas."
+                },
+                "Testing Centers": {
+                  "Title": "Centros de Pruebas",
+                  "Text": "Instalación eficiente de centros de pruebas COVID-19 u otras instalaciones médicas."
+                }
+              },
+              "Emergency and Temporary Housing": {
+                "Title": "Vivienda de Emergencia y Temporal",
+                "Disaster Relief": {
+                  "Title": "Ayuda en desastres",
+                  "Text": "Vivienda inmediata, segura y confiable para áreas afectadas por desastres."
+                },
+                "Temporary Workforce Housing": {
+                  "Title": "Vivienda Temporal para Trabajadores",
+                  "Text": "Soluciones prácticas de vivienda para trabajadores temporales."
+                }
+              }
+            },
+            "Advantages of Modular Prefabs": {
+              "Title": "Ventajas de los Prefabricados Modulares",
+              "Speed of Construction": {
+                "Title": "Velocidad de Construcción",
+                "Text": "La construcción simultánea en nuestras instalaciones y la preparación del sitio minimizan los tiempos de construcción y los retrasos por el clima."
+              },
+              "Cost-Effectiveness": {
+                "Title": "Rentabilidad",
+                "Text": "Menores costos de mano de obra y reducción de desperdicios de material."
+              },
+              "Quality Control": {
+                "Title": "Control de Calidad",
+                "Text": "Un control de calidad riguroso en entornos de fábrica garantiza una calidad y durabilidad consistentes."
+              },
+              "Flexibility and Customization": {
+                "Title": "Flexibilidad y Personalización",
+                "Text": "Diseños personalizables y espacios escalables para satisfacer necesidades específicas."
+              },
+              "Sustainability": {
+                "Title": "Sostenibilidad",
+                "Text": "Menores desperdicios y eficiencia energética superior."
+              },
+              "Reduced Disruption": {
+                "Title": "Reducción de la Disrupción",
+                "Text": "Ruido, polvo y disrupción mínimos durante la construcción."
+              }
+            },
+            "Options": {
+              "Title": "¿Busca un módulo? Nuestras opciones:",
+              "Intro": "Descubra prefabricados modulares versátiles y eficientes adaptados para satisfacer sus necesidades específicas. Ya sea que necesite alquilar, personalizar o comprar, tenemos la solución perfecta para usted.",
+              "Rent": {
+                "Title": "Alquiler",
+                "Wide Selection": {
+                  "Title": "Amplia Selección",
+                  "Text": "Explore nuestro extenso inventario para encontrar el tamaño y tipo de prefabricado modular ideal."
+                },
+                "Flexible Terms": {
+                  "Title": "Términos Flexibles",
+                  "Text": "Elija entre contratos de alquiler a corto o largo plazo para adaptarse a las necesidades de su proyecto."
+                },
+                "Maintenance Included": {
+                  "Title": "Mantenimiento",
+                  "Text": "Disfrute de la tranquilidad con mantenimiento y soporte incluidos para mantener su prefabricado en óptimas condiciones."
+                }
+              },
+              "Tailored to Your Needs": {
+                "Title": "A medida",
+                "Customized Design": {
+                  "Title": "Diseño Personalizado",
+                  "Text": "Trabaje con nuestros expertos para diseñar un prefabricado modular que cumpla con sus requisitos específicos, incluido el tamaño, la distribución y las características."
+                },
+                "Versatile Solutions": {
+                  "Title": "Soluciones Versátiles",
+                  "Text": "Perfecto para oficinas, aulas o espacios habitables, adaptado a sus necesidades únicas."
+                },
+                "Expert Craftsmanship": {
+                  "Title": "Artesanía Experta",
+                  "Text": "Nuestro equipo asegura que su prefabricado modular se construya con los más altos estándares."
+                }
+              },
+              "Buy New Prefabs": {
+                "Title": "Casetas Nuevas",
+                "Brand New Options": {
+                  "Title": "Opciones Nuevas",
+                  "Text": "Descubra una variedad de prefabricados modulares nuevos listos para satisfacer sus necesidades."
+                },
+                "Expert Assembly": {
+                  "Title": "Montaje Experto",
+                  "Text": "Nos encargamos de todo el proceso de ensamblaje para una configuración rápida y eficiente."
+                },
+                "Professional Support": {
+                  "Title": "Soporte Profesional",
+                  "Text": "Nuestro equipo proporciona asesoramiento experto y soporte durante todo el proceso de compra y ensamblaje."
+                }
+              },
+              "Buy Second-Hand Prefabs": {
+                "Title": "Segunda mano",
+                "Refurbished Quality": {
+                  "Title": "Calidad Reacondicionada",
+                  "Text": "Nuestros prefabricados modulares de segunda mano son minuciosamente inspeccionados, reacondicionados y certificados para garantizar su integridad estructural."
+                },
+                "Cost-Effective": {
+                  "Title": "Rentable",
+                  "Text": "Disfrute de precios más bajos sin comprometer la calidad."
+                },
+                "Ready to Use": {
+                  "Title": "Listo para Usar",
+                  "Text": "Estos prefabricados están listos para usar de inmediato, ofreciendo una solución rápida y económica."
+                }
+              }
+            }
+        },
+    "Sales Text":"Productos de segunda mano de calidad a precios económicos listos para ser utilizados de inmediato. Compra inteligente, ahorra a lo grande y benefíciate de nuestros servicios completos hoy mismo!",
+    "Prefab Building": {
+        "Title": "Edificio Prefabricado",
+        "Description": {
+          "Title": "Descripción",
+          "Text": "En lugar de un solo módulo, los edificios prefabricados consisten en múltiples módulos unidos en el sitio para crear una superficie más grande."
+        },
+        "Advantages": {
+          "Title": "Ventajas",
+          "Less Disruption on Site": {
+            "Title": "Menos Disrupción en el Sitio",
+            "Text": "Con trabajos paralelos, puede preparar los módulos fuera de la ubicación mientras simultáneamente prepara el terreno, minimizando la disrupción y acelerando el proceso de construcción."
+          },
+          "Cost-Effective": {
+            "Title": "Económico",
+            "Text": "Los edificios prefabricados son mucho más baratos que la construcción tradicional, ofreciendo ahorros significativos."
+          },
+          "Highly Customizable": {
+            "Title": "Altamente Personalizable",
+            "Text": "Estos edificios pueden adaptarse a necesidades específicas, proporcionando flexibilidad en el diseño y la funcionalidad."
+          },
+          "Mobility": {
+            "Title": "Movilidad",
+            "Text": "Los edificios prefabricados son móviles, lo que le permite reubicarlos según sea necesario sin perder su inversión."
+          }
+        },
+        "Our Services": {
+          "Title": "Nuestros Servicios",
+          "Design Consultation": {
+            "Title": "Consultoría de Diseño",
+            "Text": "Nuestros expertos trabajan con usted para diseñar un plano que maximice el espacio y la funcionalidad, cumpliendo con sus requisitos específicos."
+          },
+          "Customization Options": {
+            "Title": "Opciones de Personalización",
+            "Text": "Elija entre una amplia gama de acabados, accesorios y características para personalizar su edificio según sus especificaciones exactas."
+          },
+          "Project Management": {
+            "Title": "Gestión de Proyectos",
+            "Text": "Nos encargamos de todos los aspectos del proyecto, desde la planificación inicial hasta la instalación final, garantizando una experiencia sin estrés y sin complicaciones."
+          },
+          "Transportation and Installation": {
+            "Title": "Transporte e Instalación",
+            "Text": "Nuestro equipo garantiza el transporte e instalación seguros y eficientes de los módulos prefabricados, minimizando retrasos y disrupciones."
+          },
+          "After-Sales Support": {
+            "Title": "Soporte Postventa",
+            "Text": "Ofrecemos soporte y mantenimiento continuos para mantener su edificio prefabricado en óptimas condiciones."
+          }
+        },
+        "Conclusion": {
+          "Title": "Conclusión",
+          "Text": "Elija nuestros edificios prefabricados para una solución inteligente, eficiente y flexible a sus necesidades de espacio. Contáctenos hoy para saber más sobre cómo podemos ayudarle a lograr su visión."
+        }
+      },
+      "Maintenance Page": {
+        "Title": "Servicios de Mantenimiento",
+        "Description": {
+          "Title": "Descripción",
+          "Text": "Con años de experiencia en la industria, ofrecemos servicios de mantenimiento completos para asegurar que sus módulos y contenedores se mantengan en óptimas condiciones. Nuestro equipo de expertos está capacitado para manejar una amplia gama de problemas, asegurando que su inversión esté protegida y sea totalmente funcional."
+        },
+        "Services": {
+          "Title": "Nuestros Servicios",
+          "Painting": {
+            "Title": "Pintura",
+            "Text": "Nuestros servicios profesionales de pintura ayudan a mantener la apariencia y protección de sus módulos y contenedores. Elija entre una variedad de colores y acabados para mantener sus unidades con un aspecto nuevo."
+          },
+          "Structural Repairs": {
+            "Title": "Reparaciones Estructurales",
+            "Text": "Ofrecemos servicios de reparación estructural para abordar cualquier daño o desgaste. Desde reforzar puntos débiles hasta reemplazar secciones dañadas, aseguramos que sus estructuras se mantengan seguras y duraderas."
+          },
+          "Roof and Leak Repairs": {
+            "Title": "Reparaciones de Techos y Fugas",
+            "Text": "Nuestro equipo puede identificar y arreglar cualquier fuga o problema en el techo, previniendo daños por agua y asegurando la longevidad de sus módulos y contenedores."
+          },
+          "Door and Window Maintenance": {
+            "Title": "Mantenimiento de Puertas y Ventanas",
+            "Text": "Ofrecemos servicios de mantenimiento y reparación para puertas y ventanas, asegurando que funcionen correctamente y mantengan la seguridad y el aislamiento de sus unidades."
+          },
+          "Electrical Systems": {
+            "Title": "Sistemas Eléctricos",
+            "Text": "Nuestros expertos pueden manejar cualquier problema eléctrico, desde reparaciones de cableado hasta actualizaciones del sistema, asegurando que sus unidades sean seguras y cumplan con las normas."
+          },
+          "Insulation and Climate Control": {
+            "Title": "Aislamiento y Control Climático",
+            "Text": "Nuestro equipo puede mejorar los sistemas de aislamiento y control climático de sus unidades, asegurando que sean energéticamente eficientes y cómodos."
+          },
+          "General Upkeep": {
+            "Title": "Mantenimiento General",
+            "Text": "Proporcionamos servicios de mantenimiento regular para mantener sus prefabricados y contenedores en excelentes condiciones, incluyendo limpieza, inspecciones y reparaciones menores."
+          }
+        }
+      },
+      "Cabin Page": {
+        "Title": "Refugio de campo",
+        "Description": {
+          "Title": "Descripción",
+          "Text": "Nuestro refugio de campo es un contenedor transformado en un refugio perfecto para escapadas. Equipado con todas las comodidades que necesitas, es ideal para disfrutar de fines de semana, vacaciones o reuniones con amigos. Estos refugio están diseñados para ofrecer confort y conveniencia en un paquete compacto y asequible."
+        },
+        "Advantages": {
+          "Title": "Ventajas",
+          "Reduced Price": {
+            "Title": "Precio Reducido",
+            "Text": "Disfruta de todos los beneficios de un refugio vacacional a una fracción del costo de las casas de vacaciones tradicionales. Nuestras refugio son económicos sin comprometer la calidad."
+          },
+          "Fast Response": {
+            "Title": "Respuesta Rápida",
+            "Text": "Ten tu refugio listo en poco tiempo. Nuestro proceso eficiente asegura una entrega y montaje rápidos, para que puedas empezar a disfrutar de tu nuevo espacio cuanto antes."
+          },
+          "Excellent Design Team": {
+            "Title": "Excelente Equipo de Diseño",
+            "Text": "Nuestro equipo de expertos te ayudará a diseñar y decorar tu refugio para que se adapte perfectamente a tu estilo y preferencias. Desde el diseño hasta la decoración, aseguramos que tu refugio se sienta como un verdadero hogar."
+          },
+          "Ready to Use": {
+            "Title": "Lista para Usar",
+            "Text": "Entregamos tu refugio totalmente montado y listo para usar. No se requiere montaje adicional; solo vete y comienza a disfrutar."
+          },
+          "Customizable": {
+            "Title": "Personalizable",
+            "Text": "Personaliza tu refugio según tus gustos. Elige entre una variedad de acabados, accesorios y características para crear un espacio que refleje tu gusto y necesidades personales."
+          },
+          "Eco-Responsible": {
+            "Title": "Sostenible",
+            "Text": "Nuestros refugios están diseñados con la sostenibilidad en mente. Utilizamos el máximo de materiales reciclados posibles para minimizar el impacto ambiental, asegurando que puedas disfrutar de tu refugio con una conciencia tranquila."
+          }
+        },
+        "Our Services": {
+          "Title": "Nuestros Servicios",
+          "Design Consultation": {
+            "Title": "Consultoría de Diseño",
+            "Text": "Trabaja con nuestra diseñadora y arquitecta para crear una refugio que se adapte a tus necesidades y estilo. Ofrecemos consultas personalizadas para asegurar que cada detalle sea perfecto."
+          },
+          "Customization Options": {
+            "Title": "Opciones de Personalización",
+            "Text": "Desde el suelo hasta los accesorios, personaliza cada aspecto de tu refugio. Ofrecemos una amplia gama de opciones para que tu refugio sea única."
+          },
+          "Fast Delivery and Setup": {
+            "Title": "Entrega y Montaje Rápidos",
+            "Text": "Nuestros servicios eficientes de entrega y montaje significan que puedes empezar a disfrutar de tu refugio rápidamente. Nos encargamos de toda la logística para asegurar una experiencia sin problemas."
+          },
+          "After-Sales Support": {
+            "Title": "Soporte Postventa",
+            "Text": "Nuestro compromiso contigo no termina con la entrega. Ofrecemos soporte postventa completo para abordar cualquier pregunta o preocupación que puedas tener."
+          }
+        },
+        "Conclusion": {
+          "Title": "Conclusión",
+          "Text": "Descubre la combinación perfecta de economía, conveniencia y confort con nuestro refugio de campo. Contáctanos hoy para saber más sobre cómo podemos ayudarte a crear tu refugio de ensueño."
+        }
+      }         
+}

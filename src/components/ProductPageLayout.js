@@ -4,17 +4,15 @@ import Image from 'next/image';
 import ContactForm from './ContactForm';
 import NavBar from './NavBar';
 import ContactInfoFooter from './ContactInfoFooter';
-import { useTranslation } from 'react-i18next';
 
-const ProductPageLayout = ({ title, description, imageSrc }) => {
-    const { t } = useTranslation();
+const ProductPageLayout = ({ title, description, imageSrc, translations, locale, page}) => {
 
     return (
         <>
             <Head>
                 <title>{title}</title>
             </Head>
-            <NavBar />
+            <NavBar locale={locale} page={page} translations={translations}/>
             <div className="relative h-64 w-full md:h-96 mb-8">
                 <Image src={imageSrc} alt={title} layout="fill" objectFit="cover"/>
                 <div className="absolute bottom-0 left-0 bg-primary text-white p-4 rounded-md">
@@ -28,14 +26,14 @@ const ProductPageLayout = ({ title, description, imageSrc }) => {
                 <div className="md:w-1/4 flex justify-center md:justify-start bg-primary p-9 rounded-md">
                     <div className="w-full max-w-md">
                         <div className="bg-primary text-white p-4 text-center rounded-md">
-                            <h2 className="text-xl md:text-4xl font-bold">{t('Contact us')}</h2>
+                            <h2 className="text-xl md:text-4xl font-bold">{translations['Contact us']}</h2>
                         </div>
-                        <ContactForm />
+                        <ContactForm translations={translations} locale={locale}/>
                     </div>
                 </div>
             </div>
             <div className="sm:h-16 md:h-20"></div>
-            <ContactInfoFooter />
+            <ContactInfoFooter translations={translations} locale={locale}/>
         </>
     );
 };

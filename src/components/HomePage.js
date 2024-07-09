@@ -3,49 +3,38 @@ import Head from 'next/head';
 import HeroBanner from './HeroBanner';
 import ServicesSection from './ServicesSection';
 import ProductsSection from './ProductSection';
-import { useTranslation, Trans } from 'react-i18next';
 import WelcomeText from './WelcomeText';
+import NavBar from './NavBar';
+import ContactInfoFooter from './ContactInfoFooter';
+import ContactFormModal from './ContactFormModal';
 
-function HomePage() {
-    const { t } = useTranslation();
-    const [showText, setShowText] = useState(false);
 
-    const toggleText = () => {
-        setShowText(!showText);
-    };
-
+function HomePage({ translations, locale, page }) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  
     return (
-        <>
-            <Head>
-                <title>SIM Reus</title>
-            </Head>
-            <HeroBanner />
-            <div className="flex flex-col md:flex-row items-center justify-center">
-                <div className="md:w-1/2 flex justify-center">
-                    <WelcomeText />
-                </div>
-                <div className="p-9 md:w-1/2 bg-primary">
-                    <ServicesSection />
-                </div>
-            </div>
-            <div className="mt-10 p-6 bg-gray-100 rounded-lg shadow-md flex flex-col items-center">
-                <div className="flex justify-between items-center w-full">
-                    <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 text-center">
-                        {t('Why Prefabs')}
-                    </h2>
-                    <button className="text-xs sm:text-sm md:text-md lg:text-lg text-primary cursor-pointer focus:outline-none" onClick={toggleText}>
-                        {showText ? '-' : '+'}
-                    </button>
-                </div>
-                {showText && (
-                    <p className="text-xs sm:text-sm md:text-md lg:text-lg w-5/6">
-                        <Trans i18nKey="Why Prefabs Text" />
-                    </p>
-                )}
-            </div>
-            <ProductsSection />
-        </>
+      <>
+        <Head>
+          <title>{translations['Welcome to SIM']}</title>
+        </Head>
+        <NavBar locale={locale} page={page} translations={translations}/>
+        <HeroBanner translations={translations} locale={locale} />
+        <div className="flex flex-col md:flex-row items-center justify-center">
+          <div className="md:w-1/2 flex justify-center">
+            <WelcomeText translations={translations} locale={locale}/>
+          </div>
+          <div className="p-9 md:w-1/2 bg-primary">
+            <ServicesSection translations={translations} />
+          </div>
+        </div>
+        <ProductsSection translations={translations} locale={locale} />
+        <ContactInfoFooter translations={translations} locale={locale}/>
+        <button className="mb-8 mr-8 md:mb-5 lg:mb-8 text-lg md:text-xl lg:text-xl bg-primary hover:bg-secondary text-white font-bold  rounded-full z-50 p-3 fixed bottom-0 right-0 " onClick={() => setIsModalOpen(true)}>
+            {translations['Contact us']}
+        </button>
+        {isModalOpen && <ContactFormModal onClose={() => setIsModalOpen(false)} translations={translations} locale={locale}/>}
+      </>
     );
-}
-
-export default HomePage;
+  }
+  
+  export default HomePage;

@@ -1,22 +1,21 @@
 import React from 'react';
-import Head from 'next/head';
-import ProductPageLayout from '../../components/ProductPageLayout';
-import { useTranslation } from 'react-i18next';
-import edificiModularImage from '../../../public/images/homepage/edifici-despres.jpeg';
+import ModularBuildingPageLayout from '../../../components/ModularBuildingPageLayout';
+import { getTranslation } from '../../../lib/getTranslation';
 
-function BuildingPage() {
-    const { t } = useTranslation();
+export async function getStaticProps() {
+  const translations = getTranslation('en');
+  return {
+    props: {
+      translations,
+    },
+  };
+}
 
-    const title = t('Modular Building');
-    const description = t('Modular Building Text');
-    const imageSrc = edificiModularImage;
+function BuildingPage({translations}) {
 
     return (
         <>
-            <Head>
-                <title>{title}</title>
-            </Head>
-            <ProductPageLayout title={title} description={description} imageSrc={imageSrc} />
+            <ModularBuildingPageLayout translations={translations} locale="/en/"/>
         </>
     );
 }

@@ -8,11 +8,6 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
     const mainImage = product.images.find(image => image.isMain === true);
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
-    const bufferToBase64 = (buffer) => {
-        const binary = Buffer.from(buffer).toString('base64');
-        return `data:image/jpeg;base64,${binary}`;
-    };
-
     const handleDelete = async (e) => {
         e.stopPropagation();
         try {
@@ -53,17 +48,20 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
 
     return (
         <div 
-            className="relative shadow-xl rounded-lg overflow-hidden h-64 md:h-64 lg:h-80 group" 
-            style={{ width: '25vh', height: '25vh' }}
+            className="relative shadow-xl rounded-lg overflow-hidden w-[20vh] h-[20vh] md:w-[25vh] md:h-[25vh] lg:w-[30vh] lg:h-[30vh] group" 
         >
             {mainImage && (
-                <Image
-                    src={bufferToBase64(mainImage.imageData.data)}
-                    alt={product.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="absolute inset-0 z-0"
-                />
+                <picture>
+                    <source srcSet={`http://localhost:4000${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
+                    <source srcSet={`http://localhost:4000${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
+                    <Image
+                        src={`http://localhost:4000${mainImage.imageUrls[400]}`}
+                        alt={product.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className="absolute inset-0 z-0"
+                    />
+                </picture>
             )}
             <div className="absolute inset-0 flex flex-col justify-end">
                 <div className="bg-black bg-opacity-60 text-white p-2">
@@ -100,26 +98,26 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
                 </button>
             </div>
             {showDeleteConfirmation && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                        <div className="relative w-full max-w-lg p-8 bg-white rounded-lg shadow-lg">
-                            <h3 className="text-xl font-bold mb-4">Segur que vols esborrar el producte?</h3>
-                            <div className="flex space-x-4">
-                                <button
-                                    onClick={handleDelete}
-                                    className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
-                                >
-                                    Si
-                                </button>
-                                <button
-                                    onClick={() => setShowDeleteConfirmation(false)}
-                                    className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 transition"
-                                >
-                                    No
-                                </button>
-                            </div>
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="relative w-full max-w-lg p-8 bg-white rounded-lg shadow-lg">
+                        <h3 className="text-xl font-bold mb-4">Segur que vols esborrar el producte?</h3>
+                        <div className="flex space-x-4">
+                            <button
+                                onClick={handleDelete}
+                                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
+                            >
+                                Si
+                            </button>
+                            <button
+                                onClick={() => setShowDeleteConfirmation(false)}
+                                className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 transition"
+                            >
+                                No
+                            </button>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
         </div>
     );
 };

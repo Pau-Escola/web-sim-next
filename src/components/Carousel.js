@@ -2,40 +2,48 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 
-const Carousel = ({ images, interval = 7000, objectFit, encoded }) => {
+const Carousel = ({ images, interval = 7000, objectFit, encoded, translations }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
     const [dragStart, setDragStart] = useState(null);
     const [dragEnd, setDragEnd] = useState(null);
     const autoSlideRef = useRef();
-    const { t } = useTranslation();
+    const intervalRef = useRef();
 
     const minSwipeDistance = 50;
-
-    const bufferToBase64 = (buffer) => {
-        const binary = Buffer.from(buffer).toString('base64');
-        return `data:image/jpeg;base64,${binary}`;
-    };
-
     useEffect(() => {
         autoSlideRef.current = goToNext;
     });
 
     useEffect(() => {
-        const play = () => {
-            autoSlideRef.current();
-        };
-
-        const intervalId = setInterval(play, interval);
-        return () => clearInterval(intervalId);
+        startAutoSlide();
+        return () => stopAutoSlide();
     }, [interval]);
+
+    const startAutoSlide = () => {
+        stopAutoSlide();
+        intervalRef.current = setInterval(() => {
+            autoSlideRef.current();
+        }, interval);
+    };
+
+    const stopAutoSlide = () => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+    };
+
+    const resetAutoSlide = () => {
+        stopAutoSlide();
+        startAutoSlide();
+    };
 
     const handleTouchStart = (e) => {
         setTouchEnd(null);
         setTouchStart(e.targetTouches[0].clientX);
+        resetAutoSlide();
     };
 
     const handleTouchMove = (e) => {
@@ -53,11 +61,13 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded }) => {
         } else if (isSwipeRight) {
             goToPrevious();
         }
+        resetAutoSlide();
     };
 
     const handleMouseDown = (e) => {
         setDragEnd(null);
         setDragStart(e.clientX);
+        resetAutoSlide();
     };
 
     const handleMouseMove = (e) => {
@@ -79,14 +89,17 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded }) => {
         }
         setDragStart(null);
         setDragEnd(null);
+        resetAutoSlide();
     };
 
     const goToPrevious = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+        resetAutoSlide();
     };
 
     const goToNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        resetAutoSlide();
     };
 
     return (
@@ -111,25 +124,29 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded }) => {
                         key={index}
                         className="w-full h-full flex-shrink-0 relative"
                     >
-                        <Image
-                            src={encoded? bufferToBase64(image.imageData.data) :image.src}
-                            alt={image.alt || 'Image'}
-                            layout="fill"
-                            objectFit={objectFit}
-                            objectPosition={image.position || 'center center'}
-                        />
-                        { (image.title && image.text && image.url) &&
-                        (<div className="absolute top-3/4 md:top-1/2 right-0 md:transform md:top-1/2 md:m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-white">
-                            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{t(image.title)}</h2>
-                            <p className="text-sm sm:text-base md:text-lg mb-4">{t(image.text)}</p>
-                            <Link href={image.url} legacyBehavior>
-                                <a>
-                                    <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">
-                                        {t('View Product')}
-                                    </button>
-                                </a>
-                            </Link>
-                        </div>)}
+                        <picture>
+                            <source srcSet={encoded ? `http://localhost:4000${image.imageUrls[1200]}` : image.src} media="(min-width: 1200px)" />
+                            <source srcSet={encoded ? `http://localhost:4000${image.imageUrls[800]}` : image.src} media="(min-width: 800px)" />
+                            <Image
+                                src={encoded ? `http://localhost:4000${image.imageUrls[400]}` : image.src}
+                                alt={image.alt || 'Image'}
+                                layout="fill"
+                                objectFit={objectFit}
+                                objectPosition={image.position || 'center center'}
+                            />
+                        </picture>
+                        {(image.title && image.text && image.url) &&
+                            (<div className="absolute top-3/4 md:top-1/2 right-0 md:transform md:top-1/2 md:m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-white">
+                                <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{translations[image.title]}</h2>
+                                <p className="text-sm sm:text-base md:text-lg mb-4">{translations[image.text]}</p>
+                                <Link href={image.url} legacyBehavior>
+                                    <a>
+                                        <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">
+                                            {translations['View Product']}
+                                        </button>
+                                    </a>
+                                </Link>
+                            </div>)}
                     </div>
                 ))}
             </div>
@@ -138,7 +155,10 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded }) => {
                     <div
                         key={index}
                         className={`h-2 w-2 rounded-full cursor-pointer ${currentIndex === index ? 'bg-secondary' : 'bg-gray-300'}`}
-                        onClick={() => setCurrentIndex(index)}
+                        onClick={() => {
+                            setCurrentIndex(index);
+                            resetAutoSlide();
+                        }}
                     ></div>
                 ))}
             </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useTranslation, Trans } from 'react-i18next';
 import Image from  'next/image';
 import economicLogo from "../../public/images/welcometext/economic.png"
 import mobilLogo from "../../public/images/welcometext/mobil.png"
@@ -7,9 +6,8 @@ import modularLogo from "../../public/images/welcometext/modular.png"
 import rapidLogo from "../../public/images/welcometext/rapid.png"
 import ContactFormModal from './ContactFormModal';
 
-const WelcomeText = ( translations ) => {
+const WelcomeText = ( {translations, locale} ) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { t } = useTranslation();
 
     return (
         <div className="text-center">
@@ -20,12 +18,12 @@ const WelcomeText = ( translations ) => {
                 <p className="text-sm sm:text-md md:text-lg lg:text-xl max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: translations['Hero Text']}}></p>
                 <div className=" flex flex-col justify-center items-center text-center text-white space-y-4">
                 <button
-                    className="mt-8 md:mt-12 lg:mt-16 text-lg md:text-xl lg:text-2xl bg-primary hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-full z-40"
+                    className="mt-8 md:mt-12 lg:mt-16 text-lg md:text-xl lg:text-2xl bg-primary hover:bg-secondary text-white font-bold py-4 px-6 rounded-full z-40"
                     onClick={() => setIsModalOpen(true)}
                 >
-                    {t('Ask for quote')}
+                    {translations['Ask for quote']}
                 </button>
-                {isModalOpen && <ContactFormModal onClose={() => setIsModalOpen(false)} />}
+                {isModalOpen && <ContactFormModal onClose={() => setIsModalOpen(false)} translations={translations} locale={locale}/>}
             </div>
             </div>
 
