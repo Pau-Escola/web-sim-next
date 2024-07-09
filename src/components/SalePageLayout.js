@@ -16,7 +16,7 @@ const SalesPageLayout = ({ translations, locale }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('/api/products');
+        const response = await axios.get('/products');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);

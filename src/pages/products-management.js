@@ -47,7 +47,7 @@ const ProductsManagementPage = () => {
       return;
     }
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/workers`, {
+      const response = await axios.get(`${API_BASE_URL}/workers`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setWorkers(response.data);

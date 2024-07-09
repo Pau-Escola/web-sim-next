@@ -9,7 +9,7 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, { username, password });
+      const response = await axios.post(`${API_BASE_URL}/auth/login`, { username, password });
       const { token } = response.data;
       localStorage.setItem('token', token); // Store token in localStorage
       onLogin(token);

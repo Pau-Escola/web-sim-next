@@ -13,7 +13,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
             return;
         }
         try {
-            await axios.delete(`${API_BASE_URL}/api/product-images/${imageId}`, {
+            await axios.delete(`${API_BASE_URL}/product-images/${imageId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProduct();
@@ -24,7 +24,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
 
     const handleSetMain = async (imageId) => {
         try {
-            await axios.put(`${API_BASE_URL}/api/product-images/set-to-main-image/${imageId}`, {}, {
+            await axios.put(`${API_BASE_URL}/product-images/set-to-main-image/${imageId}`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProduct();
@@ -42,7 +42,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
         formData.append('productId', productId);  // Replace with the actual product ID
 
         try {
-            await axios.post(`${API_BASE_URL}/api/product-images`, formData, {
+            await axios.post(`${API_BASE_URL}/product-images`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,

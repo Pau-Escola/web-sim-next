@@ -9,7 +9,7 @@ const UpdateWorkerModal = ({ isOpen, onClose, token, worker, fetchWorkers }) => 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`${API_BASE_URL}/api/workers/${worker.id}`, { isAdmin }, {
+      await axios.patch(`${API_BASE_URL}/workers/${worker.id}`, { isAdmin }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchWorkers(token);

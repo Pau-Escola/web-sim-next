@@ -30,7 +30,7 @@ const ProductList = ({ token }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/products`, {
+      const response = await axios.get(`${API_BASE_URL}/products`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(response.data);
@@ -51,7 +51,7 @@ const ProductList = ({ token }) => {
     if (!searchReference) return;
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/products/${searchReference}`, {
+      const response = await axios.get(`${API_BASE_URL}/products/${searchReference}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSearchResult(response.data);

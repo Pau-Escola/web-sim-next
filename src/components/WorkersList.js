@@ -15,7 +15,7 @@ const WorkersList = ({ workers, token, fetchWorkers }) => {
 
   const handleDeleteWorker = async (workerId) => {
     try {
-      await axios.delete(`${API_BASE_URL}/api/workers/${workerId}`, {
+      await axios.delete(`${API_BASE_URL}kers/${workerId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchWorkers(token); // Refresh the list of workers

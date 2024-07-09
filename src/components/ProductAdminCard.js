@@ -13,7 +13,7 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
     const handleDelete = async (e) => {
         e.stopPropagation();
         try {
-            await axios.delete(`${API_BASE_URL}/api/products/${product.reference}`, {
+            await axios.delete(`${API_BASE_URL}/products/${product.reference}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProducts();
@@ -26,7 +26,7 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         e.stopPropagation();
         try {
             const updatedBooked = !product.booked;
-            await axios.patch(`${API_BASE_URL}/api/products/${product.reference}`, { booked: updatedBooked }, {
+            await axios.patch(`${API_BASE_URL}ducts/${product.reference}`, { booked: updatedBooked }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProducts();
@@ -39,7 +39,7 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         e.stopPropagation();
         try {
             const updatedSold = !product.sold;
-            await axios.patch(`${API_BASE_URL}/api/products/${product.reference}`, { sold: updatedSold }, {
+            await axios.patch(`${API_BASE_URL}/products/${product.reference}`, { sold: updatedSold }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProducts();
