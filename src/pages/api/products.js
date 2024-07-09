@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api';  // Replace with your backend API base URL
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;  // Replace with your backend API base URL
 const AUTH_HEADER = 'Bearer ';
 
 export default async function handler(req, res) {

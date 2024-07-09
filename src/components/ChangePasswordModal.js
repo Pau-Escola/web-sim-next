@@ -4,11 +4,13 @@ import axios from 'axios';
 
 const ChangePasswordModal = ({ isOpen, onClose, token, worker, fetchWorkers }) => {
   const [password, setPassword] = useState('');
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:8080/api/workers/${worker.id}`, { password }, {
+      await axios.patch(`${API_BASE_URL}/api/workers/${worker.id}`, { password }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchWorkers(token);

@@ -4,6 +4,7 @@ import { FaCalendarCheck } from 'react-icons/fa';
 
 const ProductCard = ({ product, onSelectProduct, translations }) => {
     const mainImage = product.images.find(image => image.isMain === true);
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_API_URL_IMAGES; 
 
     return (
         <div 
@@ -12,10 +13,10 @@ const ProductCard = ({ product, onSelectProduct, translations }) => {
         >
             {mainImage && (
                 <picture>
-                    <source srcSet={`http://localhost:4000${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
-                    <source srcSet={`http://localhost:4000${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
+                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
+                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
                     <Image
-                        src={`http://localhost:4000${mainImage.imageUrls[400]}`}
+                        src={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[400]}`}
                         alt={product.title}
                         layout="fill"
                         objectFit="cover"

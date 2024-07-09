@@ -11,6 +11,7 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
     const [dragEnd, setDragEnd] = useState(null);
     const autoSlideRef = useRef();
     const intervalRef = useRef();
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_API_URL_IMAGES; 
 
     const minSwipeDistance = 50;
     useEffect(() => {
@@ -125,10 +126,10 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
                         className="w-full h-full flex-shrink-0 relative"
                     >
                         <picture>
-                            <source srcSet={encoded ? `http://localhost:4000${image.imageUrls[1200]}` : image.src} media="(min-width: 1200px)" />
-                            <source srcSet={encoded ? `http://localhost:4000${image.imageUrls[800]}` : image.src} media="(min-width: 800px)" />
+                            <source srcSet={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrls[1200]}` : image.src} media="(min-width: 1200px)" />
+                            <source srcSet={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrls[800]}` : image.src} media="(min-width: 800px)" />
                             <Image
-                                src={encoded ? `http://localhost:4000${image.imageUrls[400]}` : image.src}
+                                src={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrls[400]}` : image.src}
                                 alt={image.alt || 'Image'}
                                 layout="fill"
                                 objectFit={objectFit}

@@ -7,11 +7,13 @@ import { FaTrash, FaBookmark, FaCheck, FaEdit } from 'react-icons/fa';
 const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) => {
     const mainImage = product.images.find(image => image.isMain === true);
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_API_URL_IMAGES; 
 
     const handleDelete = async (e) => {
         e.stopPropagation();
         try {
-            await axios.delete(`http://localhost:8080/api/products/${product.reference}`, {
+            await axios.delete(`${API_BASE_URL}/api/products/${product.reference}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProducts();
@@ -24,7 +26,7 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         e.stopPropagation();
         try {
             const updatedBooked = !product.booked;
-            await axios.patch(`http://localhost:8080/api/products/${product.reference}`, { booked: updatedBooked }, {
+            await axios.patch(`${API_BASE_URL}/api/products/${product.reference}`, { booked: updatedBooked }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProducts();
@@ -37,7 +39,7 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         e.stopPropagation();
         try {
             const updatedSold = !product.sold;
-            await axios.patch(`http://localhost:8080/api/products/${product.reference}`, { sold: updatedSold }, {
+            await axios.patch(`${API_BASE_URL}/api/products/${product.reference}`, { sold: updatedSold }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProducts();
@@ -52,10 +54,10 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         >
             {mainImage && (
                 <picture>
-                    <source srcSet={`http://localhost:4000${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
-                    <source srcSet={`http://localhost:4000${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
+                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
+                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
                     <Image
-                        src={`http://localhost:4000${mainImage.imageUrls[400]}`}
+                        src={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[400]}`}
                         alt={product.title}
                         layout="fill"
                         objectFit="cover"

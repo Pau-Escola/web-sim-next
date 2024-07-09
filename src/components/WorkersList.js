@@ -10,10 +10,12 @@ const WorkersList = ({ workers, token, fetchWorkers }) => {
   const [showUpdateWorkerModal, setShowUpdateWorkerModal] = useState(false);
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
+
 
   const handleDeleteWorker = async (workerId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/workers/${workerId}`, {
+      await axios.delete(`${API_BASE_URL}/api/workers/${workerId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchWorkers(token); // Refresh the list of workers

@@ -4,11 +4,12 @@ import axios from 'axios';
 const LoginModal = ({ isOpen, onClose, onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/login', { username, password });
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, { username, password });
       const { token } = response.data;
       localStorage.setItem('token', token); // Store token in localStorage
       onLogin(token);

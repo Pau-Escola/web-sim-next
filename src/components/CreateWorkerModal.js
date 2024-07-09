@@ -6,11 +6,12 @@ const CreateWorkerModal = ({ isOpen, onClose, token, fetchWorkers }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/workers', { username, password, isAdmin }, {
+      await axios.post(`${API_BASE_URL}/api/workers`, { username, password, isAdmin }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchWorkers(token);

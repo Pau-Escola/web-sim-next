@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const ProductImages = ({ images, token, fetchProduct, productId }) => {
     const fileInputRef = useRef(null);
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_API_URL_IMAGES; 
 
     const handleDelete = async (imageId) => {
         if (images.length === 1) {
@@ -11,7 +13,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
             return;
         }
         try {
-            await axios.delete(`http://localhost:8080/api/product-images/${imageId}`, {
+            await axios.delete(`${API_BASE_URL}/api/product-images/${imageId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProduct();
@@ -22,7 +24,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
 
     const handleSetMain = async (imageId) => {
         try {
-            await axios.put(`http://localhost:8080/api/product-images/set-to-main-image/${imageId}`, {}, {
+            await axios.put(`${API_BASE_URL}/api/product-images/set-to-main-image/${imageId}`, {}, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProduct();
@@ -40,7 +42,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
         formData.append('productId', productId);  // Replace with the actual product ID
 
         try {
-            await axios.post('http://localhost:8080/api/product-images', formData, {
+            await axios.post(`${API_BASE_URL}/api/product-images`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,
@@ -61,10 +63,10 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
             {images.map((image, index) => (
                 <div key={index} className="w-full h-full flex-shrink-0 relative">
                     <picture>
-                        <source srcSet={`http://localhost:4000${image.imageUrls[1200]}`} media="(min-width: 1200px)" />
-                        <source srcSet={`http://localhost:4000${image.imageUrls[800]}`} media="(min-width: 800px)" />
+                        <source srcSet={`${API_BASE_URL_IMAGES}${image.imageUrls[1200]}`} media="(min-width: 1200px)" />
+                        <source srcSet={`${API_BASE_URL_IMAGES}${image.imageUrls[800]}`} media="(min-width: 800px)" />
                         <Image
-                            src={`http://localhost:4000${image.imageUrls[400]}`}
+                            src={`${API_BASE_URL_IMAGES}${image.imageUrls[400]}`}
                             alt={image.alt || 'Image'}
                             layout="responsive"
                             width={500}

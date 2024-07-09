@@ -15,6 +15,7 @@ const ProductsManagementPage = () => {
   const [products, setProducts] = useState([]);
   const [workers, setWorkers] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -46,7 +47,7 @@ const ProductsManagementPage = () => {
       return;
     }
     try {
-      const response = await axios.get('http://localhost:8080/api/workers', {
+      const response = await axios.get(`${API_BASE_URL}/api/workers`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setWorkers(response.data);

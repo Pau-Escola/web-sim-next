@@ -8,6 +8,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
     const [editableProduct, setEditableProduct] = useState({ ...product });
     const [isEditing, setIsEditing] = useState(isNewProduct);
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
 
     const handleEdit = () => {
         setIsEditing(true);
@@ -19,11 +20,11 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
         if (sanitizedProduct.title && sanitizedProduct.description && sanitizedProduct.price) {
             try {
                 if (isNewProduct) {
-                    await axios.post('http://localhost:8080/api/products', sanitizedProduct, {
+                    await axios.post(`${API_BASE_URL}/api/products`, sanitizedProduct, {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                 } else {
-                    await axios.patch(`http://localhost:8080/api/products/${product.reference}`, sanitizedProduct, {
+                    await axios.patch(`${API_BASE_URL}/api/products/${product.reference}`, sanitizedProduct, {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                 }
@@ -44,7 +45,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:8080/api/products/${product.reference}`, {
+            await axios.delete(`${API_BASE_URL}/api/products/${product.reference}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             onClose();
@@ -57,7 +58,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
     const handleToggleBooked = async () => {
         try {
             const updatedBooked = !editableProduct.booked;
-            await axios.patch(`http://localhost:8080/api/products/${product.reference}`, { booked: updatedBooked }, {
+            await axios.patch(`${API_BASE_URL}/api/products/${product.reference}`, { booked: updatedBooked }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setEditableProduct({ ...editableProduct, booked: updatedBooked });
@@ -70,7 +71,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
     const handleToggleSold = async () => {
         try {
             const updatedSold = !editableProduct.sold;
-            await axios.patch(`http://localhost:8080/api/products/${product.reference}`, { sold: updatedSold }, {
+            await axios.patch(`${API_BASE_URL}/api/products/${product.reference}`, { sold: updatedSold }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setEditableProduct({ ...editableProduct, sold: updatedSold, booked: updatedSold ? false : editableProduct.booked });
@@ -82,7 +83,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
 
     const fetchProduct = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/products/${product.reference}`, {
+            const response = await axios.get(`${API_BASE_URL}/api/products/${product.reference}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setEditableProduct(response.data);

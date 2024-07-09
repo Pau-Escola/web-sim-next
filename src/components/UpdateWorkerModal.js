@@ -4,11 +4,12 @@ import axios from 'axios';
 
 const UpdateWorkerModal = ({ isOpen, onClose, token, worker, fetchWorkers }) => {
   const [isAdmin, setIsAdmin] = useState(worker.isAdmin);
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:8080/api/workers/${worker.id}`, { isAdmin }, {
+      await axios.patch(`${API_BASE_URL}/api/workers/${worker.id}`, { isAdmin }, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchWorkers(token);
