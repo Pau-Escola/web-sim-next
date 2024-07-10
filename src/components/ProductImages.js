@@ -66,20 +66,14 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
         }
 
         try {
-            // Resize the image to different sizes
-            const sizes = [400, 800, 1200];
+            // Resize the image to 1200px
+            const resizedBlob = await resizeImage(file, 1200);
+            const resizedFile = new File([resizedBlob], `1200_${file.name}`, { type: 'image/jpeg' });
             const formData = new FormData();
-            formData.append('productId', productId);  // Replace with the actual product ID
+            formData.append('image', resizedFile);
+            formData.append('productId', productId); // Replace with the actual product ID
 
-            for (const size of sizes) {
-                console.log(`Resizing to ${size}px...`);
-                const resizedBlob = await resizeImage(file, size);
-                const resizedFile = new File([resizedBlob], `${size}_${file.name}`, { type: 'image/jpeg' });
-                formData.append(`images[]`, resizedFile);
-                console.log(`Resized image size: ${resizedFile.size}`);
-            }
-
-            console.log('Uploading images...');
+            console.log('Uploading resized image...');
             await axios.post(`${API_BASE_URL}/product-images`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -89,7 +83,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
 
             fetchProduct();
         } catch (error) {
-            alert("Error");
+            alert("Error uploading image");
             console.error('Error uploading image:', error);
         }
     };
@@ -150,4 +144,3 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
 };
 
 export default ProductImages;
-
