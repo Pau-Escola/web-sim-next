@@ -125,17 +125,13 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
                         key={index}
                         className="w-full h-full flex-shrink-0 relative"
                     >
-                        <picture>
-                            <source srcSet={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrls[1200]}` : image.src} media="(min-width: 1200px)" />
-                            <source srcSet={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrls[800]}` : image.src} media="(min-width: 800px)" />
                             <Image
-                                src={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrls[400]}` : image.src}
+                                src={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrl}` : image.src}
                                 alt={image.alt || 'Image'}
                                 layout="fill"
                                 objectFit={objectFit}
                                 objectPosition={image.position || 'center center'}
                             />
-                        </picture>
                         {(image.title && image.text && image.url) &&
                             (<div className="absolute top-3/4 md:top-1/2 right-0 md:transform md:top-1/2 md:m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-white">
                                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{translations[image.title]}</h2>

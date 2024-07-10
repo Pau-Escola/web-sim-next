@@ -12,17 +12,13 @@ const ProductCard = ({ product, onSelectProduct, translations }) => {
             onClick={() => onSelectProduct(product)} 
         >
             {mainImage && (
-                <picture>
-                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
-                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
                     <Image
-                        src={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[400]}`}
+                        src={`${API_BASE_URL_IMAGES}${mainImage.imageUrl}`}
                         alt={product.title}
                         layout="fill"
                         objectFit="cover"
                         className="absolute inset-0 z-0"
                     />
-                </picture>
             )}
             {product.sold && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 z-10">

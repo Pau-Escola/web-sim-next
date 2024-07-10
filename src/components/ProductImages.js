@@ -96,11 +96,8 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full h-full">
             {images.map((image, index) => (
                 <div key={index} className="w-full h-full flex-shrink-0 relative">
-                    <picture>
-                        <source srcSet={`${API_BASE_URL_IMAGES}${image.imageUrls[1200]}`} media="(min-width: 1200px)" />
-                        <source srcSet={`${API_BASE_URL_IMAGES}${image.imageUrls[800]}`} media="(min-width: 800px)" />
                         <NextImage
-                            src={`${API_BASE_URL_IMAGES}${image.imageUrls[400]}`}
+                            src={`${API_BASE_URL_IMAGES}${image.imageUrl}`}
                             alt={image.alt || 'Image'}
                             layout="responsive"
                             width={500}
@@ -108,7 +105,6 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
                             className="w-full h-auto object-cover"
                             loading="lazy"
                         />
-                    </picture>
                     <button
                         onClick={() => handleDelete(image.id)}
                         className="absolute top-2 right-2 bg-red-600 font-bold text-white p-2 rounded"

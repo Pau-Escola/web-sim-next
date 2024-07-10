@@ -53,17 +53,13 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
             className="relative shadow-xl rounded-lg overflow-hidden w-[20vh] h-[20vh] md:w-[25vh] md:h-[25vh] lg:w-[30vh] lg:h-[30vh] group" 
         >
             {mainImage && (
-                <picture>
-                    <source srcSet={`${API_BASE_IMAGE_URL}${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
-                    <source srcSet={`${API_BASE_IMAGE_URL}${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
                     <Image
-                        src={`${API_BASE_IMAGE_URL}${mainImage.imageUrls[400]}`}
+                        src={`${API_BASE_IMAGE_URL}${mainImage.imageUrl}`}
                         alt={product.title}
                         layout="fill"
                         objectFit="cover"
                         className="absolute inset-0 z-0"
                     />
-                </picture>
             )}
             <div className="absolute inset-0 flex flex-col justify-end">
                 <div className="bg-black bg-opacity-60 text-white p-2">
