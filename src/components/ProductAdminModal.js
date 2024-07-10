@@ -207,7 +207,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
                         </div>
                     ) : (
                         <p className="text-lg font-bold mb-4" >
-                            Tipus de producte: {editableProduct.itemType}
+                            Tipus de producte: {editableProduct.itemType === "PREFAB"? "MÒDUL":"CONTENIDOR"}
                         </p>
                     )}
                 </div>
