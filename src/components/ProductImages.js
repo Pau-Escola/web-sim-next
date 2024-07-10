@@ -1,36 +1,36 @@
 import React, { useRef } from 'react';
-import Image from 'next/image';
+import NextImage from 'next/image'; // Renamed to avoid conflict
 import axios from 'axios';
 import Pica from 'pica';
 
 const ProductImages = ({ images, token, fetchProduct, productId }) => {
     const fileInputRef = useRef(null);
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
-    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_BASE_URL; 
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_BASE_URL;
     const pica = new Pica();
 
-const resizeImage = async (file, width) => {
-    const img = new Image();
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+    const resizeImage = async (file, width) => {
+        const img = new window.Image(); // Ensure we use the global Image constructor
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
 
-    return new Promise((resolve, reject) => {
-        img.onload = () => {
-            const scaleFactor = width / img.width;
-            canvas.width = width;
-            canvas.height = img.height * scaleFactor;
+        return new Promise((resolve, reject) => {
+            img.onload = () => {
+                const scaleFactor = width / img.width;
+                canvas.width = width;
+                canvas.height = img.height * scaleFactor;
 
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            pica.resize(canvas, canvas)
-                .then(() => pica.toBlob(canvas, 'image/jpeg', 0.8))
-                .then(blob => resolve(blob))
-                .catch(error => reject(error));
-        };
-        img.onerror = reject;
-        img.src = URL.createObjectURL(file);
-    });
-};
+                pica.resize(canvas, canvas)
+                    .then(() => pica.toBlob(canvas, 'image/jpeg', 0.8))
+                    .then(blob => resolve(blob))
+                    .catch(error => reject(error));
+            };
+            img.onerror = reject;
+            img.src = URL.createObjectURL(file);
+        });
+    };
 
     const handleDelete = async (imageId) => {
         if (images.length === 1) {
@@ -61,35 +61,38 @@ const resizeImage = async (file, width) => {
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
         if (!file) {
-            alert("Cap file trobat");
-            return;}
-    
+            alert("No file found");
+            return;
+        }
+
         try {
             // Resize the image to different sizes
             const sizes = [400, 800, 1200];
             const formData = new FormData();
             formData.append('productId', productId);  // Replace with the actual product ID
-            alert ("Estem dins del proces")
+
             for (const size of sizes) {
+                console.log(`Resizing to ${size}px...`);
                 const resizedBlob = await resizeImage(file, size);
                 const resizedFile = new File([resizedBlob], `${size}_${file.name}`, { type: 'image/jpeg' });
-                formData.append(`images`, resizedFile);
+                formData.append(`images[]`, resizedFile);
+                console.log(`Resized image size: ${resizedFile.size}`);
             }
-            alert("Les imatges ja s'han fet resize");
+
+            console.log('Uploading images...');
             await axios.post(`${API_BASE_URL}/product-images`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,
                 },
             });
-                
+
             fetchProduct();
         } catch (error) {
             alert("Error");
             console.error('Error uploading image:', error);
         }
     };
-    
 
     const handleAddImageClick = () => {
         fileInputRef.current.click();
@@ -102,7 +105,7 @@ const resizeImage = async (file, width) => {
                     <picture>
                         <source srcSet={`${API_BASE_URL_IMAGES}${image.imageUrls[1200]}`} media="(min-width: 1200px)" />
                         <source srcSet={`${API_BASE_URL_IMAGES}${image.imageUrls[800]}`} media="(min-width: 800px)" />
-                        <Image
+                        <NextImage
                             src={`${API_BASE_URL_IMAGES}${image.imageUrls[400]}`}
                             alt={image.alt || 'Image'}
                             layout="responsive"
@@ -147,3 +150,4 @@ const resizeImage = async (file, width) => {
 };
 
 export default ProductImages;
+
