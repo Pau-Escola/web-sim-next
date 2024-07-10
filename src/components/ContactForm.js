@@ -57,7 +57,7 @@ const ContactForm = ({ product, translations, locale }) => {
                  <strong>{product.title}</strong>
                 </p>
                 <Image
-                     src={bufferToBase64(mainImage.imageData.data)}
+                     src={mainImage.imageUrl}
                      alt={product.title}
                      width={150} // Adjust the width as needed
                      height={150} // Adjust the height as needed
