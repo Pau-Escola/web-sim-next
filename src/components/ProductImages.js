@@ -60,29 +60,32 @@ const resizeImage = async (file, width) => {
 
     const handleFileChange = async (event) => {
         const file = event.target.files[0];
-        if (!file) return;
+        if (!file) {
+            alert("Cap file trobat");
+            return;}
     
         try {
             // Resize the image to different sizes
             const sizes = [400, 800, 1200];
             const formData = new FormData();
             formData.append('productId', productId);  // Replace with the actual product ID
-    
+            alert ("Estem dins del proces")
             for (const size of sizes) {
                 const resizedBlob = await resizeImage(file, size);
                 const resizedFile = new File([resizedBlob], `${size}_${file.name}`, { type: 'image/jpeg' });
                 formData.append(`images`, resizedFile);
             }
-    
+            alert("Les imatges ja s'han fet resize");
             await axios.post(`${API_BASE_URL}/product-images`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`,
                 },
             });
-    
+                
             fetchProduct();
         } catch (error) {
+            alert("Error");
             console.error('Error uploading image:', error);
         }
     };
