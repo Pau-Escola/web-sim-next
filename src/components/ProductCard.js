@@ -4,7 +4,7 @@ import { FaCalendarCheck } from 'react-icons/fa';
 
 const ProductCard = ({ product, onSelectProduct, translations }) => {
     const mainImage = product.images.find(image => image.isMain === true);
-    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_API_URL_IMAGES; 
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_BASE_URL; 
 
     return (
         <div 

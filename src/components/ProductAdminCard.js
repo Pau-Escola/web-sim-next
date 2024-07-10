@@ -7,8 +7,8 @@ import { FaTrash, FaBookmark, FaCheck, FaEdit } from 'react-icons/fa';
 const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) => {
     const mainImage = product.images.find(image => image.isMain === true);
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL; 
-    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_API_URL_IMAGES; 
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+    const API_BASE_IMAGE_URL = process.env.NEXT_PUBLIC_BASE_URL; 
 
     const handleDelete = async (e) => {
         e.stopPropagation();
@@ -54,10 +54,10 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         >
             {mainImage && (
                 <picture>
-                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
-                    <source srcSet={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
+                    <source srcSet={`${API_BASE_IMAGE_URL}${mainImage.imageUrls[1200]}`} media="(min-width: 1200px)" />
+                    <source srcSet={`${API_BASE_IMAGE_URL}${mainImage.imageUrls[800]}`} media="(min-width: 800px)" />
                     <Image
-                        src={`${API_BASE_URL_IMAGES}${mainImage.imageUrls[400]}`}
+                        src={`${API_BASE_IMAGE_URL}${mainImage.imageUrls[400]}`}
                         alt={product.title}
                         layout="fill"
                         objectFit="cover"

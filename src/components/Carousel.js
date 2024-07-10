@@ -11,7 +11,7 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
     const [dragEnd, setDragEnd] = useState(null);
     const autoSlideRef = useRef();
     const intervalRef = useRef();
-    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_API_URL_IMAGES; 
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_BASE_URL; 
 
     const minSwipeDistance = 50;
     useEffect(() => {
