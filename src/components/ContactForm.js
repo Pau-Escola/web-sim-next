@@ -13,11 +13,6 @@ const ContactForm = ({ product, translations, locale }) => {
         emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER_ID); // Initialize EmailJS with your user ID
     }, []);
 
-    const bufferToBase64 = (buffer) => {
-        const binary = Buffer.from(buffer).toString('base64');
-        return `data:image/jpeg;base64,${binary}`;
-    };
-
     const handleChange = (e) => {
         setContact({ ...contact, [e.target.name]: e.target.value });
     };
@@ -46,7 +41,7 @@ const ContactForm = ({ product, translations, locale }) => {
             });
     };
 
-    contact.reference = product? 'Interessat en producte amb referencia ' + product.id : '';
+    contact.reference = product? 'Interessat en producte amb referencia ' + product.reference : '';
 
 
     return (
