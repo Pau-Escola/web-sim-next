@@ -7,6 +7,7 @@ const ContactForm = ({ product, translations, locale }) => {
     const [contact, setContact] = useState({ from_name: '', reply_to: '', message: '', contact_phone: '', reference:'' });
     const [isSubmitting, setIsSubmitting] = useState(false); // State to track submission status
     const [isAgreed, setIsAgreed] = useState(false);
+    const API_BASE_IMAGE_URL = process.env.NEXT_PUBLIC_BASE_URL; 
     const mainImage = product?.images.find(image => image.isMain === true);
     useEffect(() => {
         emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER_ID); // Initialize EmailJS with your user ID
@@ -45,7 +46,7 @@ const ContactForm = ({ product, translations, locale }) => {
             });
     };
 
-    contact.reference = product? 'Interessat en producte amb referencia ' + product.title : '';
+    contact.reference = product? 'Interessat en producte amb referencia ' + product.id : '';
 
 
     return (
@@ -57,7 +58,7 @@ const ContactForm = ({ product, translations, locale }) => {
                  <strong>{product.title}</strong>
                 </p>
                 <Image
-                     src={mainImage.imageUrl}
+                     src={`${API_BASE_IMAGE_URL}${mainImage.imageUrl}`}
                      alt={product.title}
                      width={150} // Adjust the width as needed
                      height={150} // Adjust the height as needed
