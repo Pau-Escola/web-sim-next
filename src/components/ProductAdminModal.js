@@ -24,7 +24,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                 } else {
-                    await axios.patch(`${API_BASE_URL}ducts/${product.reference}`, sanitizedProduct, {
+                    await axios.patch(`${API_BASE_URL}/products/${product.reference}`, sanitizedProduct, {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                 }

@@ -26,7 +26,7 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         e.stopPropagation();
         try {
             const updatedBooked = !product.booked;
-            await axios.patch(`${API_BASE_URL}ducts/${product.reference}`, { booked: updatedBooked }, {
+            await axios.patch(`${API_BASE_URL}/products/${product.reference}`, { booked: updatedBooked }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchProducts();
