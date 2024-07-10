@@ -1,7 +1,7 @@
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   images: {
-    domains: ['localhost'],
+    domains: ['simreus.com', 'www.simreus.com'],
   },
 };
 
