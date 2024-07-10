@@ -7,6 +7,7 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
     const fileInputRef = useRef(null);
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
     const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_BASE_URL;
+    const IMAGE_SERVICE_URL = 'https://www.simreus.com/productService/upload';
     const pica = new Pica();
 
     const resizeImage = async (file, width) => {
@@ -71,12 +72,24 @@ const ProductImages = ({ images, token, fetchProduct, productId }) => {
             const resizedFile = new File([resizedBlob], `1200_${file.name}`, { type: 'image/jpeg' });
             const formData = new FormData();
             formData.append('image', resizedFile);
-            formData.append('productId', productId); // Replace with the actual product ID
 
             console.log('Uploading resized image...');
-            await axios.post(`${API_BASE_URL}/product-images`, formData, {
+            const response = await axios.post(IMAGE_SERVICE_URL, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            const imageUrl = response.data.imageUrls[0];
+            console.log('Image uploaded, URL:', imageUrl);
+
+            // Send the image URL to the backend
+            await axios.post(`${API_BASE_URL}/product-images`, {
+                productId,
+                isMain: false, // or true depending on your logic
+                imageUrl
+            }, {
+                headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
