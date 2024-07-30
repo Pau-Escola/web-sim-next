@@ -17,7 +17,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
     const handleSave = async () => {
         const { title, description, sold, booked, itemType, length, width } = editableProduct;
         const sanitizedProduct = { title, description, sold, booked, itemType, length, width };
-        if (sanitizedProduct.title && sanitizedProduct.description && sanitizedProduct.price) {
+        if (sanitizedProduct.title && sanitizedProduct.description) {
             try {
                 if (isNewProduct) {
                     await axios.post(`${API_BASE_URL}/products`, sanitizedProduct, {
