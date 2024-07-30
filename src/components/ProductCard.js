@@ -36,7 +36,6 @@ const ProductCard = ({ product, onSelectProduct, translations }) => {
                 <div className="bg-black bg-opacity-60 text-white p-2">
                     <div className="flex justify-between items-center w-full">
                         <h3 className="text-white text-l md:text-xl font-semibold">{product.title}</h3>
-                        <span className="text-white text-l md:text-xl font-semibold">{product.price} €</span>
                     </div>
                 </div>
             </div>

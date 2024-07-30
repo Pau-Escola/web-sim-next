@@ -15,8 +15,8 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
     };
 
     const handleSave = async () => {
-        const { title, description, price, sold, booked, itemType, length, width } = editableProduct;
-        const sanitizedProduct = { title, description, price, sold, booked, itemType, length, width };
+        const { title, description, sold, booked, itemType, length, width } = editableProduct;
+        const sanitizedProduct = { title, description, sold, booked, itemType, length, width };
         if (sanitizedProduct.title && sanitizedProduct.description && sanitizedProduct.price) {
             try {
                 if (isNewProduct) {
@@ -35,7 +35,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
                 console.error('Error saving product:', error);
             }
         } else {
-            alert('Els camps títol, descripció i preu sempre han de tindre un valor');
+            alert('Els camps títol i descripció sempre han de tindre un valor');
         }
     };
 
@@ -137,25 +137,6 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
                     ) : (
                         <p className="text-lg mb-4 ">
                             Descripció: {editableProduct.description}
-                        </p>
-                    )}
-                </div>
-                <div className="mb-4">
-                    {isEditing ? (
-                        <div>
-                            <p>Preu (NO posar el simbol de €)</p>
-                            <input
-                                type="text"
-                                name="price"
-                                placeholder='Preu'
-                                value={editableProduct.price || ''}
-                                onChange={handleChange}
-                                className="border p-2 w-full mb-2"
-                            />
-                        </div>
-                    ) : (
-                        <p className="text-lg font-bold mb-4" >
-                            Preu: {editableProduct.price}
                         </p>
                     )}
                 </div>

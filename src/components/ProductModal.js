@@ -21,7 +21,6 @@ const ProductModal = ({ product, onClose, translations, locale }) => {
                     <Carousel images={product.images} objectFit={"contain"} encoded="true" translations={translations} />
                 </div>
                 <p className="text-lg mb-4">{product.description}</p>
-                <p className="text-lg font-bold mb-4">{product.price} €</p>
                 <p className="text-lg mb-4">
                     {translations['size']}: {product.length} m x {product.width} m
                 </p>
