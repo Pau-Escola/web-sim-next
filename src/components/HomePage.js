@@ -18,7 +18,7 @@ function HomePage({ translations, locale, page }) {
       ['+500.000' , 'Unidades alquiladas'],
       ['+70.000' , 'Reparaciones'],
       ['+8k' , 'Traslados'],
-      ['+900' , 'Clientes satisfechos']]
+      ['+9000' , 'Clientes satisfechos']]
   
     return (
       <>
