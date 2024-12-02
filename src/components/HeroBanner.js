@@ -1,25 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Carousel from './Carousel'; // Import your Carousel component
-import contenidorNou from '../../public/images/homepage/contenidor-1.JPG';
-import modul from '../../public/images/homepage/conjunt-modular.jpeg';
+import edifici from '../../public/images/homepage/edifici.jpeg';
 import casetaOcasio from '../../public/images/homepage/ocasio.jpeg';
 import cabinIcon from '../../public/images/homepage/refugi-de-camp.png';
+import ContactFormModal from './ContactFormModal';
+
 
 function HeroBanner({translations, locale}) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
     const images = [
-        {src: contenidorNou, position: 'center top', url: locale+'products/container', title: 'Container', text: 'Container Text'},
-        {src: modul, position: 'center center', url: locale+'products/prefab', title: 'Prefabs', text: 'Prefabs Text'},
-        {src: casetaOcasio, position: 'center bottom', url: locale+'products/sale', title: 'Sale', text: 'Sale Text'},
-        {src: cabinIcon, position: 'center bottom', url: locale+'products/cabin', title: 'Cabin', text: 'Cabin Text'}
+      {src: casetaOcasio, position: 'center bottom', url: locale+'products/sale', title: 'Sale', text: 'Sale Text'},
+      {src: cabinIcon, position: 'center bottom', url: locale+'products/cabin', title: 'Cabin', text: 'Cabin Text'},
+      {src: edifici, position: 'center top', url: locale+'products/building', title: 'Modular Building', text: 'Modular Building Text'}
     ];
 
     return (
-        <div className="relative h-screen w-full">
-        <div className="absolute top-1/4 left-0 z-10 flex flex-col items-start justify-start text-left p-4 text-white">
-          <p className="text-5xl md:text-6xl max-w-2xl font-bold"> {translations["Slogan"]["First"]}</p>
-          <p className="text-5xl md:text-6xl max-w-2xl font-bold">{translations["Slogan"]["Second"]}</p>
+      <div className="h-screen w-full flex">
+        {/* Left Side: Slogan */}
+        <div className="flex flex-col justify-center items-start text-left ml-10 text-black w-1/3">
+          <p className="text-5xl md:text-7xl font-bold">
+            {translations["Slogan"]["First"]}
+          </p>
+          <p className="text-4xl md:text-7xl font-bold">
+            {translations["Slogan"]["Second"]}
+          </p>
+          <p className="text-4xl md:text-2xl font-bold">
+            {translations['Hero Text']}
+            {translations['Hero Text Two']}
+          </p>
+          <button
+                    className="mt-8 md:mt-12 lg:mt-16 text-lg md:text-xl lg:text-2xl bg-primary hover:bg-secondary text-white font-bold py-4 px-6 rounded-full z-40"
+                    onClick={() => setIsModalOpen(true)}
+                >
+                    {translations['Ask for quote']}
+                </button>
+                {isModalOpen && <ContactFormModal onClose={() => setIsModalOpen(false)} translations={translations} locale={locale}/>}
         </div>
-        <Carousel images={images} objectFit="cover" translations={translations} />
+    
+        {/* Right Side: Carousel */}
+        <div className="flex justify-center items-center w-2/3 h-full mt-20">
+          <Carousel images={images} objectFit="cover" translations={translations} />
+        </div>
       </div>
     );
 }

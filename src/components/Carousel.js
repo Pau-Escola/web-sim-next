@@ -1,33 +1,43 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaPlay, FaPause } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const Carousel = ({ images, interval = 7000, objectFit, encoded, translations }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [touchStart, setTouchStart] = useState(null);
-    const [touchEnd, setTouchEnd] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(true);
     const [dragStart, setDragStart] = useState(null);
     const [dragEnd, setDragEnd] = useState(null);
+    const [progressWidth, setProgressWidth] = useState(0);
+    const progressRef = useRef(null);
     const autoSlideRef = useRef();
     const intervalRef = useRef();
-    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_BASE_URL; 
-
+    const progressIntervalRef = useRef();
+    const API_BASE_URL_IMAGES = process.env.NEXT_PUBLIC_BASE_URL;
     const minSwipeDistance = 50;
+
     useEffect(() => {
         autoSlideRef.current = goToNext;
     });
 
     useEffect(() => {
-        startAutoSlide();
+        if (isPlaying) {
+            startAutoSlide();
+        } else {
+            stopAutoSlide();
+            stopProgress();
+        }
         return () => stopAutoSlide();
-    }, [interval]);
+    }, [interval, isPlaying]);
 
     const startAutoSlide = () => {
         stopAutoSlide();
+        stopProgress();
         intervalRef.current = setInterval(() => {
             autoSlideRef.current();
         }, interval);
+
+        startProgress();
     };
 
     const stopAutoSlide = () => {
@@ -37,8 +47,30 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
     };
 
     const resetAutoSlide = () => {
-        stopAutoSlide();
-        startAutoSlide();
+        if (isPlaying) {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+    };
+
+    const startProgress = () => {
+        progressIntervalRef.current = setInterval(() => {
+            setProgressWidth((prevWidth) => {
+                const newWidth = prevWidth + (100 / (interval / 100));
+                if (newWidth >= 100) {
+                    clearInterval(progressIntervalRef.current);
+                    return 100;
+                }
+                return newWidth;
+            });
+        }, 100);
+    };
+
+    const stopProgress = () => {
+        if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+        }
+        setProgressWidth(0);
     };
 
     const handleTouchStart = (e) => {
@@ -103,76 +135,105 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
         resetAutoSlide();
     };
 
+    const togglePlayPause = () => {
+        setIsPlaying(!isPlaying);
+    };
+
     return (
-        <div
-            className="carousel-container relative flex items-center justify-center overflow-hidden w-full h-full"
-            aria-roledescription="carousel"
-            aria-label="Gallery"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-        >
+        <div className="flex flex-col items-center w-full h-full">
             <div
-                className="carousel-track flex transition-transform duration-500 ease-in-out w-full h-full"
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                className="carousel-container relative flex items-center justify-center overflow-hidden w-4/5 h-4/5 rounded-lg"
+                aria-roledescription="carousel"
+                aria-label="Gallery"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
             >
-                {images.map((image, index) => (
-                    <div
-                        key={index}
-                        className="w-full h-full flex-shrink-0 relative"
-                    >
+                <div
+                    className="carousel-track flex transition-transform duration-500 ease-in-out w-full h-full rounded-lg"
+                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                    {images.map((image, index) => (
+                        <div
+                            key={index}
+                            className="w-full h-full flex-shrink-0 relative"
+                        >
                             <Image
                                 src={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrl}` : image.src}
                                 alt={image.alt || 'Image'}
                                 layout="fill"
                                 objectFit={objectFit}
                                 objectPosition={image.position || 'center center'}
+                                className="rounded-lg"
                             />
-                        {(image.title && image.text && image.url) &&
-                            (<div className="absolute top-3/4 md:top-1/2 right-0 md:transform md:top-1/2 md:m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-white">
-                                <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{translations[image.title]}</h2>
-                                <p className="text-sm sm:text-base md:text-lg mb-4">{translations[image.text]}</p>
-                                <Link href={image.url} legacyBehavior>
-                                    <a>
-                                        <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">
-                                            {translations['View Product']}
-                                        </button>
-                                    </a>
-                                </Link>
-                            </div>)}
+                            {(image.title && image.text && image.url) &&
+                                (<div className="absolute bottom-4 left-4 p-4 bg-black bg-opacity-60 rounded-lg shadow-md text-white">
+                                    <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{translations[image.title]}</h2>
+                                    <p className="text-sm sm:text-base md:text-lg mb-4">{translations[image.text]}</p>
+                                    <Link href={image.url} legacyBehavior>
+                                        <a>
+                                            <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">
+                                                {translations['View Product']}
+                                            </button>
+                                        </a>
+                                    </Link>
+                                </div>)}
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className="mt-3 flex justify-between items-center w-4/5">
+                <div className="flex items-center space-x-2 bg-primary rounded-full p-3">
+                    <button
+                        onClick={togglePlayPause}
+                        className="text-secondary"
+                        aria-label={isPlaying ? 'Pause slide' : 'Play slide'}
+                    >
+                        {isPlaying ? <FaPause className="w-6 h-6" /> : <FaPlay className="w-6 h-6" />}
+                    </button>
+                    <div className="flex space-x-2">
+                    {images.map((_, index) => (
+    <div
+        key={index}
+        className={`h-2 ${currentIndex === index ? 'w-10 bg-gray-300' : 'w-2 bg-gray-300'} rounded-full cursor-pointer relative overflow-hidden`}
+        onClick={() => {
+            setCurrentIndex(index);
+            resetAutoSlide();
+        }}
+    >
+        {currentIndex === index && (
+            <div
+                className="absolute top-0 left-0 h-full bg-secondary"
+                style={{
+                    width: `${progressWidth}%`,
+                }}
+            />
+        )}
+    </div>
+))}
                     </div>
-                ))}
+                </div>
+                <div className="flex items-center space-x-2 bg-primary rounded-full p-3">
+                    <button
+                        onClick={goToPrevious}
+                        className="text-secondary"
+                        aria-label="Previous slide"
+                    >
+                        <FaArrowLeft className="w-6 h-6" />
+                    </button>
+                    <button
+                        onClick={goToNext}
+                        className="text-secondary"
+                        aria-label="Next slide"
+                    >
+                        <FaArrowRight className="w-6 h-6" />
+                    </button>
+                </div>
             </div>
-            <div className="absolute bottom-5 w-full flex justify-center space-x-2">
-                {images.map((_, index) => (
-                    <div
-                        key={index}
-                        className={`h-2 w-2 rounded-full cursor-pointer ${currentIndex === index ? 'bg-secondary' : 'bg-gray-300'}`}
-                        onClick={() => {
-                            setCurrentIndex(index);
-                            resetAutoSlide();
-                        }}
-                    ></div>
-                ))}
-            </div>
-            <button
-                onClick={goToPrevious}
-                className="absolute top-1/2 transform -translate-y-1/2 left-0 h-full flex items-center justify-center z-10 cursor-pointer hidden md:flex"
-                aria-label="Previous slide"
-            >
-                <FaArrowLeft className="w-6 h-6 text-secondary" />
-            </button>
-            <button
-                onClick={goToNext}
-                className="absolute top-1/2 transform -translate-y-1/2 right-0 h-full flex items-center justify-center z-10 cursor-pointer hidden md:flex"
-                aria-label="Next slide"
-            >
-                <FaArrowRight className="w-6 h-6 text-secondary" />
-            </button>
         </div>
     );
 };

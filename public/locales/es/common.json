@@ -1,9 +1,12 @@
 {
     "Welcome to SIM": "Bienvenido a SIM",
-    "Hero Text": "Con 20 años de experiencia especializándonos en una amplia gama de <strong>soluciones prefabricadas</strong>, SIM GRUP se destaca como líder en <strong>construcción móvil</strong> y <strong>edificación modular</strong>. Nuestra experiencia abarca <strong>estructuras temporales</strong> y <strong>permanentes</strong>, disponibles para <strong>alquiler</strong> o <strong>venta</strong>, ya sean <strong>nuevas</strong> o <strong>de segunda mano</strong>. Esta amplia experiencia convierte a SIM GRUP en una respuesta confiable para todas sus necesidades de prefabricación.<br><br>Ofrecemos un servicio integral que incluye <strong>mantenimiento</strong>, <strong>transformación</strong> y <strong>reubicación</strong> de cualquier propiedad prefabricada, asegurando <strong>flexibilidad</strong> y <strong>adaptabilidad</strong> a sus necesidades cambiantes. En SIM, no solo brindamos asesoramiento experto sino que también desarrollamos productos hechos a medida de sus necesidades. Nuestro compromiso es ofrecer soluciones que cumplan con sus expectativas, proporcionando una experiencia fluida y eficiente en la construcción modular.",
+    "Hero Text": "Más de 20 años siendo el proveedor de confianza de soluciones integrales modulares.",
+    "Hero Text Two": " Ofrecemos también servicios de mantenimiento, traslado y modificación de tus prefabricados.",
     "Our services": "Nuestros servicios",
     "Our products": "Nuestros productos",
     "Contact us": "Contáctanos",
+    "Home": "Inicio",
+    "Contact": "Contacto",
     "Ask for quote": "Pedir presupuesto",
     "Container": "Contenedores",
     "Container Text": "Si lo que necesitas es adquirir o alquilar un contenedor, te ayudaremos a encontrar lo que necesitas y si no, te lo haremos a medida.",
@@ -35,7 +38,7 @@
     "Sending": "Enviando...",
     "Sent Success": "Mensaje enviado correctamente.",
     "Sent Failure": "No se ha podido enviar tu mensaje, escrívenos a comercial@simreus.com o llámanos al 977 344 711.",
-    "Modular Building": "Construcción Modular",
+    "Modular Building": "Edificios",
     "Modular Building Text": "Colaboramos con empresas de construcción en la edificación de viviendas y edificios.",
     "Recycled Goods": "Reciclaje de contenedores y módulos",
     "Recycled Goods Text": "Damos una segunda vida a los módulos antiguos y, si no es posible, utilizamos las partes que aún son funcionales para <strong>reducir la huella de carbono</strong>.",
@@ -73,7 +76,7 @@
     "Product Booked":"RESERVADO",
     "Slogan":{
       "First":"Tu visión,",
-      "Second": "Nuestros módulos."
+      "Second": "nuestros módulos."
     },
     "Containers": {
         "cabinRedirect": "Descubre nuestros refugios de campo",

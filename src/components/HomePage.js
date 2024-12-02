@@ -7,10 +7,18 @@ import WelcomeText from './WelcomeText';
 import NavBar from './NavBar';
 import ContactInfoFooter from './ContactInfoFooter';
 import ContactFormModal from './ContactFormModal';
+import DataBand from './DataBand';
 
 
 function HomePage({ translations, locale, page }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const dataArray = [
+      ['+100 mil', 'Unidades vendidas'],
+      ['+500.000' , 'Unidades alquiladas'],
+      ['+70.000' , 'Reparaciones'],
+      ['+8k' , 'Traslados'],
+      ['+900' , 'Clientes satisfechos']]
   
     return (
       <>
@@ -19,6 +27,9 @@ function HomePage({ translations, locale, page }) {
         </Head>
         <NavBar locale={locale} page={page} translations={translations}/>
         <HeroBanner translations={translations} locale={locale} />
+        <div className='mb-5'>
+        <DataBand dataArray={dataArray}/>
+        </div>
         <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="md:w-1/2 flex justify-center">
             <WelcomeText translations={translations} locale={locale}/>

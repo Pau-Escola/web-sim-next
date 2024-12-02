@@ -1,9 +1,12 @@
 {
     "Welcome to SIM": "Benvingut a SIM",
-    "Hero Text": "Amb 20 anys d'experiència especialitzant-nos en una àmplia gamma de <strong>solucions prefabricades</strong>, SIM GRUP es destaca com a líder en <strong>construcció mòbil</strong> i <strong>edificació modular</strong>. La nostra experiència abasta <strong>estructures temporals</strong> i <strong>permanents</strong>, disponibles per a <strong>lloguer</strong> o <strong>venda</strong>, ja siguin <strong>noves</strong> o <strong>de segona mà</strong>. Aquesta àmplia experiència converteix a SIM GRUP en una resposta fiable per a totes les seves necessitats de prefabricació.<br><br>Oferim un servei integral que inclou <strong>manteniment</strong>, <strong>transformació</strong> i <strong>reubicació</strong> de qualsevol propietat prefabricada, assegurant <strong>flexibilitat</strong> i <strong>adaptabilitat</strong> a les seves necessitats canviants. A SIM, no només oferim assessorament expert sinó que també desenvolupem productes fets a mida de les seves necessitats. El nostre compromís és oferir solucions que compleixin amb les seves expectatives, proporcionant una experiència fluida i eficient en la construcció modular.",
+    "Hero Text": "Més de 20 anys sent el proveidor de confiança de solucions modulars.",
+    "Hero Text Two": "Oferint també serveis de manteniment, trasllat i modificació dels teus prefabricats.",
     "Our services": "Els nostres serveis",
     "Our products": "Els nostres productes",
     "Contact us": "Contacta'ns",
+    "Contact": "Contacte",
+    "Home": "Inici",
     "Ask for quote": "Demanar pressupost",
     "Container": "Contenidors",
     "Container Text": "Si el que necessites és adquirir o llogar un contenidor t'ajudarem a trobar el que necessites i sino te'l farem a mida.",
@@ -35,7 +38,7 @@
     "Sending": "Enviant...",
     "Sent Success": "Missatge enviat correctament.",
     "Sent Failure": "No s'ha pogut enviar el teu missatge, escriu-nos a comercial@simreus.com o truca'ns al 977 344 711.",
-    "Modular Building": "Contrucció Modular",
+    "Modular Building": "Edificis",
     "Modular Building Text": "Col·laborem amb empreses de construcció en l'edificació de vivendes i edificis.",
     "Recycled Goods": "Reciclatge de contenidors i mòduls",
     "Recycled Goods Text": "Donem una segona vida als mòduls antics i, si no és possible, utilitzem les parts que encara són funcionals per a <strong>reduir la petjada de carboni</strong>.",
@@ -73,7 +76,7 @@
     "size":"Mides",
     "Slogan":{
       "First":"La teva visió,",
-      "Second": "Els nostres móduls."
+      "Second": "els nostres móduls."
     },
     "Containers": {
         "cabinRedirect": "Explora els nostres refugis de camp",
