@@ -16,7 +16,7 @@ function HomePage({ translations, locale, page }) {
     const dataArray = [
       ['+100 mil', 'Unidades vendidas'],
       ['+500.000' , 'Unidades alquiladas'],
-      ['+700.000' , 'Reparaciones'],
+      ['+700.00' , 'Reparaciones'],
       ['+8k' , 'Traslados'],
       ['+9000' , 'Clientes satisfechos']]
   
