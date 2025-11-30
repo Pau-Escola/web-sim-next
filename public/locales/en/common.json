@@ -71,6 +71,7 @@
     "Product Sold":"SOLD",
     "Product Booked":"BOOKED",
     "size":"Size",
+    "Last Units":"Last Units",
     "Slogan":{
       "First":"Your vision,",
       "Second": "Our prefabs."

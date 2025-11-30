@@ -126,7 +126,7 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
                         className="w-full h-full flex-shrink-0 relative"
                     >
                             <Image
-                                src={encoded ? `${API_BASE_URL_IMAGES}${image.imageUrl}` : image.src}
+                                src={image.imageUrl ? `${API_BASE_URL_IMAGES}${image.imageUrl}` : image.src}
                                 alt={image.alt || 'Image'}
                                 layout="fill"
                                 objectFit={objectFit}
@@ -135,7 +135,7 @@ const Carousel = ({ images, interval = 7000, objectFit, encoded, translations })
                         {(image.title && image.text && image.url) &&
                             (<div className="absolute top-3/4 md:top-1/2 right-0 md:transform md:top-1/2 md:m-8 p-4 bg-black bg-opacity-60 rounded-lg shadow-md w-full sm:w-2/3 md:w-1/2 lg:w-1/3 text-white">
                                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">{translations[image.title]}</h2>
-                                <p className="text-sm sm:text-base md:text-lg mb-4">{translations[image.text]}</p>
+                                <p className="text-sm sm:text-base md:text-lg mb-4">{image.isFeaturedProduct ? image.text : translations[image.text]}</p>
                                 <Link href={image.url} legacyBehavior>
                                     <a>
                                         <button className="bg-secondary text-white py-2 px-4 rounded-md opacity-75 hover:opacity-100 transition-opacity">

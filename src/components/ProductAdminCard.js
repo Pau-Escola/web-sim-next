@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
-import { FaTrash, FaBookmark, FaCheck, FaEdit } from 'react-icons/fa';
+import { FaTrash, FaBookmark, FaCheck, FaEdit, FaStar } from 'react-icons/fa';
 
 const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) => {
     const mainImage = product.images.find(image => image.isMain === true);
@@ -48,6 +48,19 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
         }
     };
 
+    const handleToggleFeatured = async (e) => {
+        e.stopPropagation();
+        try {
+            const updatedFeatured = !product.featured;
+            await axios.patch(`${API_BASE_URL}/products/${product.reference}`, { featured: updatedFeatured }, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            fetchProducts();
+        } catch (error) {
+            console.error('Error toggling featured status:', error);
+        }
+    };
+
     return (
         <div 
             className="relative shadow-xl rounded-lg overflow-hidden w-[20vh] h-[20vh] md:w-[25vh] md:h-[25vh] lg:w-[30vh] lg:h-[30vh] group" 
@@ -62,7 +75,7 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
                     />
             )}
             <div className="absolute inset-0 flex flex-col justify-end">
-                <div className="bg-black bg-opacity-60 text-white p-2">
+                    <div className="bg-black bg-opacity-60 text-white p-2">
                     <div className="flex justify-between items-center w-full">
                         <h3 className="text-white text-l md:text-xl font-semibold">{product.title}</h3>
                     </div>
@@ -86,6 +99,12 @@ const ProductAdminCard = ({ product, onSelectProduct, token, fetchProducts }) =>
                     className={`text-green-600 bg-white rounded-full p-2 ${product.sold ? '' : 'opacity-50'}`}
                 >
                     <FaCheck />
+                </button>
+                <button 
+                    onClick={handleToggleFeatured} 
+                    className={`text-yellow-400 bg-white rounded-full p-2 ${product.featured ? '' : 'opacity-50'}`}
+                >
+                    <FaStar />
                 </button>
                 <button
                     onClick={() => onSelectProduct(product)}

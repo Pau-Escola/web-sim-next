@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Switch from 'react-switch';
 import ProductImages from './ProductImages';
@@ -16,7 +16,7 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
 
     const handleSave = async () => {
         const { title, description, sold, booked, itemType, length, width } = editableProduct;
-        const sanitizedProduct = { title, description, sold, booked, itemType, length, width };
+        const sanitizedProduct = { title, description, sold, booked, itemType, length, width, featured: Boolean(editableProduct.featured) };
         if (sanitizedProduct.title && sanitizedProduct.description) {
             try {
                 if (isNewProduct) {
@@ -81,6 +81,19 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
         }
     };
 
+    const handleToggleFeatured = async () => {
+        try {
+            const updatedFeatured = !editableProduct.featured;
+            await axios.patch(`${API_BASE_URL}/products/${product.reference}`, { featured: updatedFeatured }, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setEditableProduct({ ...editableProduct, featured: updatedFeatured });
+            fetchProducts();
+        } catch (error) {
+            console.error('Error toggling featured status:', error);
+        }
+    };
+
     const fetchProduct = async () => {
         try {
             const response = await axios.get(`${API_BASE_URL}/products/${product.reference}`, {
@@ -91,6 +104,13 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
             console.error('Error fetching product:', error);
         }
     };
+
+    useEffect(() => {
+        if (!isNewProduct && product && product.reference) {
+            fetchProduct();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [product && product.reference]);
 
     if (!product && !isNewProduct) return null;
 
@@ -233,6 +253,17 @@ const ProductAdminModal = ({ product, onClose, token, fetchProducts }) => {
                                 checkedIcon={false}
                                 offColor="#bbb"
                                 onColor="#4caf50"
+                            />
+                        </div>
+                        <div className="flex space-x-4 items-center mt-4">
+                            <span>Destacado:</span>
+                            <Switch
+                                onChange={handleToggleFeatured}
+                                checked={editableProduct.featured}
+                                uncheckedIcon={false}
+                                checkedIcon={false}
+                                offColor="#bbb"
+                                onColor="#f59e0b"
                             />
                         </div>
                         <div className="mt-4">

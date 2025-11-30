@@ -9,7 +9,7 @@ import ContactInfoFooter from './ContactInfoFooter';
 import ContactFormModal from './ContactFormModal';
 
 
-function HomePage({ translations, locale, page }) {
+function HomePage({ translations, locale, page, featuredProducts = [] }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
   
     return (
@@ -18,7 +18,7 @@ function HomePage({ translations, locale, page }) {
           <title>{translations['Welcome to SIM']}</title>
         </Head>
         <NavBar locale={locale} page={page} translations={translations}/>
-        <HeroBanner translations={translations} locale={locale} />
+        <HeroBanner translations={translations} locale={locale} featuredProducts={featuredProducts} />
         <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="md:w-1/2 flex justify-center">
             <WelcomeText translations={translations} locale={locale}/>
